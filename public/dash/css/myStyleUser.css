@@ -1,0 +1,38 @@
+body{
+
+}
+
+#datosPersonales{
+    position: relative;
+    right: -10%;
+    padding-right:50px;
+    padding-left: 50px;
+    top: 20px;
+    border: 1px solid #eaecea;
+    border-radius: 10%;
+    background: #eaecea;
+    width: 450px;
+    height: 360px;
+}
+
+
+.row{
+    text-align: center;
+}
+
+#datosUsuario{
+    position: relative;
+    top:20px;
+    padding-right:50px;
+    padding-left: 50px;
+    border: 1px solid #eaecea;
+    border-radius: 10%;
+    background: #eaecea;
+    width: 450px;
+    height: 500px;
+}
+#btnGuardar{
+    position: relative;
+    top: -50px;
+    left:20%;
+}
