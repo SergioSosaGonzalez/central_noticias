@@ -223,7 +223,7 @@
                           <li>
                               <div class="media">
                                   <div class="media-left">
-                                      <img class="media-object rounded-circle" src="img/jonski-avatar.jpg" alt="user2">
+                                      <img class="media-object rounded-circle" src="/dash/img/jonski-avatar.jpg" alt="user2">
                                   </div>
                                   <div class="media-body">
                                       <a href="#">
@@ -240,7 +240,7 @@
                           <li>
                               <div class="media">
                                   <div class="media-left">
-                                      <img class="media-object rounded-circle" src="img/ragnar-avatar.jpg" alt="user2">
+                                      <img class="media-object rounded-circle" src="/dash/img/ragnar-avatar.jpg" alt="user2">
                                   </div>
                                   <div class="media-body">
                                       <a href="#">
@@ -532,6 +532,8 @@
     <script src="/dash/js/ncms.min.js"></script>
     <script src="/dash/js/site-config.js"></script>
     <script src="/dash/js/pages/index.js"></script>
+    <script src="<?=$this->url->get('dash/js/AjaxIndex.js') ?>"></script>
+
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- endinject -->

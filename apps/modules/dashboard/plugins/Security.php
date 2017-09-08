@@ -61,14 +61,14 @@ class Security extends Plugin {
                 "school"=>array("index","new","delete","save","edit","update","validatename"),
                 "careers"=>array("index","new","delete","save","edit","update","validatename","permalink"),
                 "cycle"=>array("index","new","delete","save","edit","update","validatename","permalink"),
-                "user"=>array('index',"profile","updateuser","updatepassword","updateuserimage","uploadimage","socialmedia","validateemail","validateusername","editnote"),
+                "user"=>array('index',"ajax"),
                 "client"=>array("new","save","validateemail","upload"),
             );
             foreach($userResources as $resource => $actions){
                 $acl->addResource(new \Phalcon\Acl\Resource($resource),$actions);
             };
             $publicResources = array(
-                "login"=>array('index',"logout","ajax","session"),
+                "login"=>array('index',"logout","ajax","session")
             );
             foreach($publicResources as $resource => $actions){
                 $acl->addResource(new \Phalcon\Acl\Resource($resource),$actions);

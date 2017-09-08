@@ -2,11 +2,10 @@
 date_default_timezone_set('America/Mexico_City');
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //error_reporting(E_ALL);
-ini_set('display_errors',false);
+ini_set('display_errors',true);
 //error_reporting(0);
 
 $di = new \Phalcon\DI\FactoryDefault();
-
 $di->set('url', function(){
     $url = new \Phalcon\Mvc\Url();
     $url->setBaseUri("http://".$_SERVER["SERVER_NAME"]."/");
@@ -64,7 +63,7 @@ $di->set('router', function(){
         'controller' => 'login',
         'action' => 'logout',
     ));
-    $router->add('/([0-9-a-zA-Z\-]+)/([0-9-a-zA-Z\-]+)', array(
+    $router->add('/dashboard/([0-9-a-zA-Z\-]+)/([0-9-a-zA-Z\-]+)', array(
         'module'=>'dashboard',
         'controller'=>'1',
         'action'=>'2'
