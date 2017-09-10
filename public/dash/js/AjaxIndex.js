@@ -1,21 +1,61 @@
 $(document).ready(function () {
 
+       $(document).on("click","#btnEliminar",function () {
+           var idEliminar=$(this).data("eliminar");
+
+           var isDelte=confirm("¿Desea eliminar este dato?");
+           if(isDelte)
+           {
+               $.ajax({
+                 url:"/dashboard/user/ajaxdelete",
+                 method:"post",
+                 data: {id:idEliminar},
+                 dataType:"json",
+                 success:function (resp) {
+                     console.log(resp);
+                     alert("Dato eliminado correctamente");
+                     $("."+idEliminar).remove();
+                 },error:function () {
+                 },complete:function(){
+                 }
+
+               });
+           }else{
+               alert("Se ha cancelado la accion");
+           }
+
+
+       })
+
        $(document).on("click","#bActualizarDatos",function () {
            var id=document.getElementsByName('id')[0].value;
+           var primerNombre = document.getElementsByName('primerNombre')[0].value;
            var secondName = document.getElementsByName('segundoNombre')[0].value;
+           var apellidos = document.getElementsByName('apellidos')[0].value;
+           var sex =document.getElementsByName('sex')[0].value;
+           var telefono = document.getElementsByName('telefono')[0].value;
+           var username = document.getElementsByName('username')[0].value;
+           var email = document.getElementsByName('email')[0].value;
+           var rol = document.getElementsByName('rol')[0].value;
+           var foto = document.getElementsByName('foto')[0].value;
+           var estatus = document.getElementsByName('estatus')[0].value;
+           var ejecutivo = document.getElementsByName('ejecutivo')[0].value;
+
 
            $.ajax({
               url:"/dashboard/user/ajaxactualizar",
               method:"post",
-              data:{id:id,segundoNombre:secondName},
+              data:{id:id,primerNombre:primerNombre,segundoNombre:secondName,
+                    apellidos:apellidos,sex:sex,telefono:telefono,username:username,email:email,rol:rol,
+                    foto:foto,estatus:estatus,ejecutivo:ejecutivo},
               dataType:"json",
               success:function (resp) {
                   console.log(resp);
+                  alert("Datos actualizados correctamente");
+                  $("."+resp.id+" .primerNombre").text(resp.nombre);
 
               },error: function () {
-
                },complete: function () {
-
                }
            });
 

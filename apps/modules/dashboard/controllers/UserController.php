@@ -84,8 +84,18 @@ class UserController extends ControllerBase
         if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
 
         $consulta = CdUser::findFirst($request->getPost('id'));
+        $consulta->setName($request->getPost('primerNombre'));
         $consulta->setSecondName($request->getPost('segundoNombre'));
-        
+        $consulta->setLastName($request->getPost('apellidos'));
+        $consulta->setSex($request->getPost('sex'));
+        $consulta->setPhone($request->getPost('telefono'));
+        $consulta->setUsername($request->getPost('username'));
+        $consulta->setEmail($request->getPost('email'));
+        $consulta->setRol($request->getPost('rol'));
+        $consulta->setPhoto($request->getPost('foto'));
+        $consulta->setStatus($request->getPost('estatus'));
+        $consulta->setTypeExecutive($request->getPost('ejecutivo'));
+
         $consulta->save();
 
 
@@ -93,6 +103,17 @@ class UserController extends ControllerBase
                               "id"=>$request->getPost('id'),
                               "nombre"=>$consulta->getName())
                               ,200);
+
+    }
+    public function ajaxdeleteAction(){
+
+        $request= new Request();
+        if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
+
+        $formulario = CdUser::findFirst($request->getPost('id'));
+        if(!($formulario && $formulario->delete())) $this->response(array("message"=>"No se ha podido borrar","code"=>300),200);
+
+        $this->response(array("message"=>"complete"),200);
 
     }
 }

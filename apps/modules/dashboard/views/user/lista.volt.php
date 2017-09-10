@@ -125,7 +125,9 @@
                             </tr>
                             </thead>
                             <?php  foreach ($consulta as $cnv):?>
+
                             <tbody>
+                            <tr class="<?=$cnv->getUid()?>">
                                 <td><?=$cnv->getUid()?></td>
                                 <td class="primerNombre"><?=$cnv->getName()?></td>
                                 <td class="segundoNombre"><?=$cnv->getSecondName()?></td>
@@ -136,8 +138,10 @@
                                 <td class="date_creation"><?=$cnv->getDateCreation()?></td>
                                 <td class="estado"><?=$cnv->getStatus()?></td>
                                 <td><button type="button" id="btnActualizar" class="btn btn-sm btn-default" data-ids="<?=$cnv->getUid()?>" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload" aria-hidden="true"></i></button></td>
-                                <td><button class="btn btn-sm btn-danger" id="btnEliminar"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                                <td><button class="btn btn-sm btn-danger" id="btnEliminar" data-eliminar="<?=$cnv->getUid()?>"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                            </tr>
                             </tbody>
+
                            <?php endforeach;?>
                         </table>
                     </div>

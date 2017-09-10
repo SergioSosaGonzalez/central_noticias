@@ -61,7 +61,7 @@ class Security extends Plugin {
                 "school"=>array("index","new","delete","save","edit","update","validatename"),
                 "careers"=>array("index","new","delete","save","edit","update","validatename","permalink"),
                 "cycle"=>array("index","new","delete","save","edit","update","validatename","permalink"),
-                "user"=>array('index',"ajax","lista","ajaxconsulta","ajaxactualizar"),
+                "user"=>array('index',"ajax","lista","ajaxconsulta","ajaxactualizar","ajaxdelete"),
                 "client"=>array("new","save","validateemail","upload"),
             );
             foreach($userResources as $resource => $actions){
