@@ -47,5 +47,53 @@ class UserController extends ControllerBase
                               "contra"=>$contraEncriptada),
                               200);
     }
+
+    public function listaAction(){
+
+        $consulta=CdUser::find();
+        $this->view->setVar("consulta",$consulta);
+
+    }
+
+    public function ajaxconsultaAction(){
+        $reques= new Request();
+        if(!($reques->isPost() and $reques->isAjax()))$this->response(array("message"=>"Error"),404);
+        $consulta= CdUser::findFirst($reques->getPost('pId'));
+
+        $this->response(array("message"=>"correcto",
+                              "id"=>$consulta->getUid(),
+                              "primer_nombre"=>$consulta->getName(),
+                              "segundo_nombre"=>$consulta->getSecondName(),
+                              "last_name"=>$consulta->getLastName(),
+                              "sex"=>$consulta->getSex(),
+                              "phone"=>$consulta->getPhone(),
+                              "username"=>$consulta->getUsername(),
+                              "email"=>$consulta->getEmail(),
+                              "rol"=>$consulta->getRol(),
+                              "photo"=>$consulta->getPhoto(),
+                              "date_creation"=>$consulta->getDateCreation(),
+                              "cargo"=>$consulta->getCargo(),
+                              "type_executive"=>$consulta->getTypeExecutive(),
+                              "estatus"=>$consulta->getStatus()),
+                              200);
+    }
+
+    public function ajaxactualizarAction()
+    {
+        $request=new Request();
+        if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
+
+        $consulta = CdUser::findFirst($request->getPost('id'));
+        $consulta->setSecondName($request->getPost('segundoNombre'));
+        
+        $consulta->save();
+
+
+        $this->response(array("message"=>"correcto",
+                              "id"=>$request->getPost('id'),
+                              "nombre"=>$consulta->getName())
+                              ,200);
+
+    }
 }
 

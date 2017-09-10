@@ -13,6 +13,7 @@
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/icomoon.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/jquery.scrollUp.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/myStyleUser.css')?>">
+      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/jquery.dataTables.min.css')?>">
 
 
 
@@ -393,7 +394,7 @@
               <ul class="nav sub-menu">
                   <li><a href="dashboard/usuarios">Agregar usuario</a>
                   </li>
-                  <li><a href="register.html">Lista de usuarios</a>
+                  <li><a href="dashboard/lista">Lista de usuarios</a>
                   </li>
               </ul>
           </li>
@@ -449,9 +450,9 @@
       </ul>
   </div>
   <!-- end of sidebar -->
+  <div id="dashboard-alt2" class="main container-fluid dashboard-alt2">
   <?= $this->getContent() ?>
-
-
+  </div>
   <div class="site-configuration">
       <div class="site-config-control">
           <i class="material-icons">settings</i>
@@ -518,12 +519,11 @@
   </div>
 
     <script src="/dash/js/jquery.min.js"></script>
-    <script src="/dash/js/tether.min.js"></script>
+      <script src="<?=$this->url->get('dash/js/AjaxIndex.js') ?>"></script>
+
+  <script src="/dash/js/tether.min.js"></script>
     <script src="/dash/js/bootstrap.min.js"></script>
-    <script src="/dash/js/jquery.flot.min.js"></script>
-    <script src="/dash/js/jquery.flot.resize.min.js"></script>
-    <script src="/dash/js/jquery.flot.time.min.js"></script>
-    <script src="/dash/js/jquery.flot.pie.min.js"></script>
+
     <script src="/dash/js/chart.min.js"></script>
     <script src="/dash/js/jquery.nicescroll.js"></script>
     <script src="/dash/js/jquery.scrollUp.min.js"></script>
@@ -531,8 +531,8 @@
     <script src="/dash/js/pace.min.js"></script>
     <script src="/dash/js/ncms.min.js"></script>
     <script src="/dash/js/site-config.js"></script>
-    <script src="/dash/js/pages/index.js"></script>
-    <script src="<?=$this->url->get('dash/js/AjaxIndex.js') ?>"></script>
+    <script src="<?=$this->url->get('dash/js/jquery.dataTables.min.js')?>"
+
 
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

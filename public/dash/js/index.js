@@ -116,7 +116,7 @@ $(document).on('ready', function () {
                 $(this).val("" + updateInterval);
             }
         });
-
+/*
         var plot = $.plot("#placeholder-realtime", [getRandomData()],
             {
                 colors: ['#BDBDBD'],
@@ -150,14 +150,14 @@ $(document).on('ready', function () {
             }
 
         );
-
+*/
         function update() {
             plot.setData([getRandomData()]);
             plot.draw();
             setTimeout(update, updateInterval);
         }
 
-        update();
+        //update();
     })
     /* ============ END REAL TIME CHART ==================*/
 

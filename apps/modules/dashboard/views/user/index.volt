@@ -68,7 +68,7 @@
             <label>Rol:</label>
             <select name="rol">
                 <option value="ADMIN">ADMIN</option>
-                <option value="GUEST">GUEST</option>
+                <option value="GUESTS">GUESTS</option>
                 <option value="COORDINATIOR">COORDINATIOR</option>
                 <option value="USER">USER</option>
                 <option value="CONTACT">CONTACT</option>

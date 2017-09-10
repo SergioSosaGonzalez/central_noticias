@@ -116,7 +116,7 @@ $(document).on('ready', function () {
                 $(this).val("" + updateInterval);
             }
         });
-/*
+
         var plot = $.plot("#placeholder-realtime", [getRandomData()],
             {
                 colors: ['#BDBDBD'],
@@ -158,12 +158,11 @@ $(document).on('ready', function () {
         }
 
         update();
-        */
     })
     /* ============ END REAL TIME CHART ==================*/
 
     
-    /* =========== LINE CHART STARTS HERE ==============
+    /* =========== LINE CHART STARTS HERE ==============*/
     $(function (util) {
         var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var config = {
