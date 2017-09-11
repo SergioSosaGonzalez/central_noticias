@@ -21,11 +21,12 @@
            <input type="text" name ="SegundoNombre" class="form-control" />
        </div>
     </div>
-</br>
-</br>
-    <div>
-       <label>Apellidos:</label>
-        <input type="text" name="apellidos" class="form-control"/>
+
+    <div class="row">
+        <div class="col-md-12">
+           <label>Apellidos:</label>
+           <input type="text" name="apellidos" class="form-control"/>
+        </div>
     </div>
 </br>
     <div class="row">

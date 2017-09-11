@@ -88,7 +88,20 @@ $(document).ready(function () {
            });
        });
     $(document).on("submit","#form",function (e) {
+        var primerNombre =document.getElementsByName('PrimerNombre')[0].value;
+        var apellidos =document.getElementsByName('apellidos')[0].value;
+        var sex=document.getElementsByName('sexo')[0].value;
+        var tel =document.getElementsByName('telefono')[0].value;
+        var username =document.getElementsByName('username')[0].value;
+        var contrasenia=document.getElementsByName('contrasenia')[0].value;
+        var correo =document.getElementsByName('correo')[0].value;
+        var urlFoto =document.getElementsByName('foto')[0].value;
+        var fechaCreacion =document.getElementsByName('fechaCreacion')[0].value;
+        var cargo =document.getElementsByName('cargo')[0].value;
 
+        if(primerNombre=="" || apellidos==""||sex==""||tel==""||username==""||contrasenia==""||correo==""||urlFoto==""||fechaCreacion=="" ||cargo=="")
+        {
+        }else{
         e.preventDefault();
         $.ajax({
           url:"/dashboard/user/ajax",
@@ -97,14 +110,17 @@ $(document).ready(function () {
           dataType:"json",
           success: function (resp) {
               console.log(resp);
-              alert("Datos guardados correctamente");
+              if(resp.mensaje == "Correo repetido"){
+                  alert("Correo repetido")
+              }else {
+                  alert("Datos guardados correctamente");
+              }
           },error: function (jqXHR,estado,error) {
-              console.log(jqXHR);
-              console.log(estado);
-              console.log(error);
+
           },complete:function (jqXHR,estado) {
           }
         });
+      }
     });
 
 

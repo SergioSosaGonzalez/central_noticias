@@ -20,6 +20,17 @@ class UserController extends ControllerBase
         $contraEncriptada = password_hash($contra,PASSWORD_BCRYPT);
 
         $cdUser = new CdUser();
+        $consulta = CdUser::find();
+        foreach ($consulta as $cnv)
+        {
+            if($request->getPost('correo') == $cnv->getEmail())
+            {
+                $this->response(array("mensaje"=>"Correo repetido"),200);
+                exit();
+                break;
+            }
+        }
+
         $cdUser->save([
             "name"=>$request->getPost('PrimerNombre'),
             "second_name"=>$request->getPost('SegundoNombre'),

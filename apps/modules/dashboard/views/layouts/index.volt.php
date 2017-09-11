@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/jquery.scrollUp.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/myStyleUser.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/jquery.dataTables.min.css')?>">
+      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/formValidation.min.css')?>"
 
 
 
@@ -519,9 +520,9 @@
   </div>
 
     <script src="/dash/js/jquery.min.js"></script>
-      <script src="<?=$this->url->get('dash/js/AjaxIndex.js') ?>"></script>
+    <script src="<?=$this->url->get('dash/js/AjaxIndex.js') ?>"></script>
 
-  <script src="/dash/js/tether.min.js"></script>
+    <script src="/dash/js/tether.min.js"></script>
     <script src="/dash/js/bootstrap.min.js"></script>
 
     <script src="/dash/js/chart.min.js"></script>
@@ -531,11 +532,93 @@
     <script src="/dash/js/pace.min.js"></script>
     <script src="/dash/js/ncms.min.js"></script>
     <script src="/dash/js/site-config.js"></script>
-    <script src="<?=$this->url->get('dash/js/jquery.dataTables.min.js')?>"
+    <script src="<?=$this->url->get('dash/js/jquery.dataTables.min.js')?>"</script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"/></script>
+    <script src="<?=$this->url->get('dash/js/formValidation.min.js')?>"></script>
+    <script src="<?=$this->url->get('dash/js/bootstrapV.min.js')?>"></script>
 
-
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#form').formValidation({
+              framework: 'bootstrap',
+              icon:{
+                  valid: 'glyphicon glyphicon-ok',
+                  invalid: 'glyphicon glyphicon-remove',
+                  validating: 'glyphicon glyphicon-refresh'
+              },
+              fields:{
+                  PrimerNombre:{
+                      row:'col-md-6',
+                      validators:{
+                          notEmpty:{
+                              message: "Se requiere nombre"
+                          }
+                      }
+                  },
+                  apellidos:{
+                      row:'col-md-12',
+                      validators:{
+                          notEmpty:{
+                               message:"Se requiere apellido"
+                          }
+                      }
+                  },
+                  telefono:{
+                      row:'col-md-7',
+                      validators:{
+                          digits:{
+                             message:"Solo se pueden poner numeros"
+                          },
+                          notEmpty:{
+                              message:"Se requiere telefono"
+                          }
+                      }
+                  },
+                  username:{
+                      row:"col-md-6",
+                      validators:{
+                          notEmpty:{
+                             message:"Se requiere nombre de usuario"
+                          }
+                      }
+                  },
+                  contrasenia:{
+                      row:'col-md-6',
+                      validators:{
+                          notEmpty:{
+                              message:"se requiere password"
+                          }
+                      }
+                  },
+                  foto:{
+                      row:'col-md-6',
+                      validators:{
+                          notEmpty:{
+                              message:"Se requiere url de foto"
+                          }
+                      }
+                  },
+                  fechaCreacion:{
+                      row:'col-md-6',
+                      validators:{
+                          notEmpty:{
+                              message:"Se requiere fecha"
+                          }
+                      }
+                  },
+                  cargo:{
+                      row:'col-md-6',
+                      validators:{
+                          notEmpty:{
+                              message:"Pon el cargo"
+                          }
+                       }
+                  }
+              }
+            });
+        })
+    </script>
     <!-- endinject -->
   </body>
 </html>

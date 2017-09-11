@@ -76,6 +76,11 @@ $di->set('router', function(){
         'controller' => 'user',
         'action' => 'lista',
     ));
+    $router->add("/dashboard/usuarios",array(
+        'module'=>'dashboard',
+        'controller' => 'user',
+        'action' => 'index',
+    ));
     $router->add('/dashboard/([0-9-a-zA-Z\-]+)/([0-9-a-zA-Z\-]+)', array(
         'module'=>'dashboard',
         'controller'=>'1',
@@ -83,11 +88,7 @@ $di->set('router', function(){
     ))->setName("controllers")->convert('action', function($action) {
         return \Phalcon\Text::lower(\Phalcon\Text::camelize($action));
     });
-    $router->add("/dashboard/usuarios",array(
-        'module'=>'dashboard',
-        'controller' => 'user',
-        'action' => 'index',
-    ));
+
 
 
     return $router;

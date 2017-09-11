@@ -26,7 +26,7 @@ class LoginController extends \Phalcon\Mvc\Controller
 
        $email = $request->getPost('email');
        $password = $request->getPost('password');
-        $consulta = CdUser::findFirst("email='$email'");
+       $consulta = CdUser::findFirst("email='$email'");
        if($consulta and $this->security->checkHash($password,$consulta->getPassword()))
        {
            $this->_registerSession($consulta);

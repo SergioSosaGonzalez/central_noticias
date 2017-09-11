@@ -13,10 +13,10 @@
 
                <form id="inicioSesion">
                    <div class="form-group">
-                       <input type="email" name="email" class="form-control" placeholder="Correo electronico" required>
+                       <input type="email" name="email" class="form-control" placeholder="Correo electronico">
                    </div>
                    <div class="form-group">
-                       <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                       <input type="password" name="password" class="form-control" placeholder="Contraseña">
                    </div>
                    <div class="checkbox">
                        <label><input type="checkbox">Recordar cuenta</label>
@@ -32,7 +32,5 @@
        </div>
     </div>
 </div>
-
-
 
 

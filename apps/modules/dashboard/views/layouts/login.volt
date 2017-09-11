@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get("dash/css/bootstrap.min.css")?>">
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/font-awesome.css')?>">
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/myStyle.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/formValidation.min.css')?>"
+
 
 
 
@@ -39,8 +41,37 @@
 <script src="<?=$this->url->get('dash/js/editable.js')?>"></script>
 <script src="<?=$this->url->get('dash/js/ajaxLogin.js')?>"></script>
 <script src="<?=$this->url->get('dash/js/preloader.js')?>"></script>
+<script src="<?=$this->url->get('dash/js/formValidation.min.js')?>"></script>
+<script src="<?=$this->url->get('dash/js/bootstrapV.min.js')?>"></script>
 
+<script>
+    $(document).ready(function() {
 
+        $('#inicioSesion').formValidation({
+            framework:'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },fields: {
+                email:{
+                    validators: {
+                        notEmpty: {
+                            message:'Se requiere email'
+                        }
+                    }
+                },
+                password: {
+                    validators:{
+                        notEmpty:{
+                            message:'Se requiere el password',
 
+                        }
+                    }
+                }
+            }
+        });
+    })
+</script>
 </body>
 </html>
