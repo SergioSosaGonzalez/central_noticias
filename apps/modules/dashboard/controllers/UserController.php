@@ -87,6 +87,26 @@ class UserController extends ControllerBase
         $this->response(array("valid"=>false),200);
     }
 
+    public function passwordAction(){
+         $request= new Request();
+         if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
+
+         $contra = $request->getPost('nuevaContra');
+         $contraEncriptada = password_hash($contra,PASSWORD_BCRYPT);
+         $consulta = CdUser::findFirst($request->getPost('idPassword'));
+         if($consulta){
+             $consulta->setPassword($contraEncriptada);
+             $consulta->save();
+             $this->response(array("message"=>"Completado",
+                                   "id"=>$request->getPost('idPassword'),
+                                   "password"=>$request->getPost('nuevaContra')),
+                                  200);
+         }
+
+
+
+    }
+
     public function usernameAction(){
         $request = new Request();
         if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);

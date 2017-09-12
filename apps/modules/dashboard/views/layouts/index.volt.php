@@ -540,6 +540,33 @@
 
     <script>
         $(document).ready(function () {
+            $('#formPass').formValidation({
+                framework: 'bootstrap',
+                icon:{
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },fields:{
+                    nuevaContra:{
+                        row:'col-md-12',
+                        validators:{
+                            notEmpty:{
+                                message:"Rellenar el campo de la contraseña"
+                            }
+                        }
+                    },
+                    confirmPassword:{
+                        row:"col-md-12",
+                        validators:{
+                            identical:{
+                                field:'nuevaContra',
+                                message:"las contraseñas no coinciden"
+                            }
+                        }
+                    }
+                }
+            });
+
             $('#form').formValidation({
               framework: 'bootstrap',
               icon:{

@@ -95,6 +95,51 @@
 </div>
 </div>
 
+<div class="modal fade" id="myContra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Actualizar password</h4>
+            </div>
+            <form id="formPass">
+            <div class="modal-body">
+
+                <!--===================================Div principal del modal para hacer el formulario======================================-->
+
+                <div class="container">
+                      <div class="row">
+                          <input type="text" name="idPassword" style="display: none" >
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <label>Nueva contraseña:</label>
+                              <input type="password" class="form-control" name="nuevaContra">
+                          </div>
+                      </div>
+                      </br>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <label>Repetir contraseña: </label>
+                              <input type="password" name="confirmPassword" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+
+                <!--=========================================================================================================================-->
+            </div>
+              <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                 <button type="submit" id="bActualizarPass" class="btn btn-primary">Guardar</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 
 <section class="content">
@@ -139,9 +184,9 @@
                                 <td class="estado"><?=$cnv->getStatus()?></td>
                                 <td><button type="button" id="btnActualizar" class="btn btn-sm btn-default" data-ids="<?=$cnv->getUid()?>" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload" aria-hidden="true"></i></button></td>
                                 <td><button class="btn btn-sm btn-danger" id="btnEliminar" data-eliminar="<?=$cnv->getUid()?>"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                                <td><button type="button" id="bActualizarContra" class="btn btn-sm btn-warning" data-contra="<?=$cnv->getUid()?>" data-toggle="modal" data-target="#myContra"><i class="fa fa-key" aria-hidden="true"></i></button></td>
                             </tr>
                             </tbody>
-
                            <?php endforeach;?>
                         </table>
                     </div>

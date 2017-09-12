@@ -23,7 +23,32 @@ $(document).ready(function () {
            }else{
                alert("Se ha cancelado la accion");
            }
-       })
+       });
+
+       $(document).on("click","#bActualizarContra",function () {
+            var id= $(this).data("contra");
+            $("input[name=idPassword]").val(id);
+       });
+
+       $(document).on("submit",'#formPass',function (e) {
+            e.preventDefault();
+            $.ajax({
+                 url:"/dashboard/user/password",
+                 method:"post",
+                 data:$(this).serialize(),
+                 dataType:"json",
+                 success:function (resp) {
+                     console.log(resp);
+                     alert("Password cambiado correctamente");
+                 },error: function () {
+
+                 },complete:function(){
+
+                 }
+             });
+
+       });
+
        $(document).on("click","#bActualizarDatos",function () {
            var id=document.getElementsByName('id')[0].value;
            var primerNombre = document.getElementsByName('primerNombre')[0].value;
