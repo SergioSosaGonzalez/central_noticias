@@ -19,5 +19,6 @@ class ControllerBase extends Controller
         }
         $this->response->setJsonContent($dataArray);
         $this->response->send();
+        exit();
     }
 }

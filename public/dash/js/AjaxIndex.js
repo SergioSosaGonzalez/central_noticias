@@ -23,10 +23,7 @@ $(document).ready(function () {
            }else{
                alert("Se ha cancelado la accion");
            }
-
-
        })
-
        $(document).on("click","#bActualizarDatos",function () {
            var id=document.getElementsByName('id')[0].value;
            var primerNombre = document.getElementsByName('primerNombre')[0].value;
@@ -53,6 +50,8 @@ $(document).ready(function () {
                   console.log(resp);
                   alert("Datos actualizados correctamente");
                   $("."+resp.id+" .primerNombre").text(resp.nombre);
+                  $("."+resp.id+" .segundoNombre").text(resp.segundoNombre);
+
 
               },error: function () {
                },complete: function () {
@@ -87,6 +86,8 @@ $(document).ready(function () {
                }
            });
        });
+
+       /*
     $(document).on("submit","#form",function (e) {
         var primerNombre =document.getElementsByName('PrimerNombre')[0].value;
         var apellidos =document.getElementsByName('apellidos')[0].value;
@@ -122,7 +123,7 @@ $(document).ready(function () {
         });
       }
     });
-
+*/
 
 
 })

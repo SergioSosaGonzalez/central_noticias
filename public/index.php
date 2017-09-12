@@ -23,19 +23,6 @@ $di->set('router', function(){
         'action' => 'index',
     ));
 
-     $router->add("/login", array(
-        'module'=>'dashboard',
-        'controller' => 'Login',
-        'action' => 'index',
-    ));
-
-    $router->add("/dashboard", array(
-        'module'=>'dashboard',
-        'controller' => 'index',
-        'action' => 'index',
-    ));
-
-
 /*Secciones*/
     $router->add('/([0-9-a-zA-Z\-]+)', array(
         'module'=>'frontend',
@@ -71,6 +58,11 @@ $di->set('router', function(){
         return \Phalcon\Text::lower(\Phalcon\Text::camelize($action));
     });
 
+    $router->add("/login/ajax",array(
+        'module'=>'dashboard',
+        'controller' => 'login',
+        'action' => 'ajax',
+    ));
     $router->add("/dashboard/lista",array(
         'module'=>'dashboard',
         'controller' => 'user',
@@ -88,7 +80,6 @@ $di->set('router', function(){
     ))->setName("controllers")->convert('action', function($action) {
         return \Phalcon\Text::lower(\Phalcon\Text::camelize($action));
     });
-
 
 
     return $router;

@@ -393,9 +393,9 @@
                   <i class="material-icons">person_add</i><span>Authentication</span>
               </a>
               <ul class="nav sub-menu">
-                  <li><a href="dashboard/usuarios">Agregar usuario</a>
+                  <li><a href="/dashboard/usuarios">Agregar usuario</a>
                   </li>
-                  <li><a href="dashboard/lista">Lista de usuarios</a>
+                  <li><a href="/dashboard/lista">Lista de usuarios</a>
                   </li>
               </ul>
           </li>
@@ -580,6 +580,11 @@
                       validators:{
                           notEmpty:{
                              message:"Se requiere nombre de usuario"
+                          },
+                          remote:{
+                              url:"/dashboard/user/username",
+                              type:"post",
+                              delay:1000
                           }
                       }
                   },
@@ -588,7 +593,22 @@
                       validators:{
                           notEmpty:{
                               message:"se requiere password"
+                          },
+
+                      }
+                  },
+                  correo:{
+                      row:'col-md-6',
+                      validators:{
+                          notEmpty:{
+                              message:"Ingrese correo"
+                          },
+                          remote:{
+                              url:"/dashboard/user/email",
+                              type:"post",
+                              delay:1000
                           }
+
                       }
                   },
                   foto:{
@@ -616,7 +636,22 @@
                        }
                   }
               }
-            });
+            }).on('success.form.fv', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url:"/dashboard/user/ajax",
+                    method:"post",
+                    data:$(this).serialize(),
+                    dataType:"json",
+                    success: function (resp) {
+                        alert("Datos guardados correctamente");
+
+                    },error: function (jqXHR,estado,error) {
+
+                    },complete:function (jqXHR,estado) {
+                    }
+                });
+             });
         })
     </script>
     <!-- endinject -->

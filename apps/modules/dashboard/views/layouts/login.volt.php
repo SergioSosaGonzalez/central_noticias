@@ -70,12 +70,32 @@
                     }
                 }
             }
-        });
+        }).on('success.form.fv', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url:"login/ajax",
+                method: "post",
+                data: $(this).serialize(),
+                datatype:"json",
+                success: function (resp) {
+                    console.log(resp);
+                    if(resp.message=="SUCCESS"){
+                        window.location.replace("/dashboard");
+                    }else{
+                        alert("Contraseña o usuario incorrecto");
+                    }
+                },  error: function(jqXHR,estado,error){
+                    console.log(estado);
+                    console.log(error);
+                },complete: function(jqXHR,estado){
+                    console.log(estado);
+                }
+            });
+        })
     })
 </script>
-
-
-
-
+<style>small.help-block {
+        color: red;
+    }</style>
 </body>
 </html>

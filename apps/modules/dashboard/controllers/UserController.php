@@ -18,19 +18,7 @@ class UserController extends ControllerBase
 
         $contra = $request->getPost('contrasenia');
         $contraEncriptada = password_hash($contra,PASSWORD_BCRYPT);
-
         $cdUser = new CdUser();
-        $consulta = CdUser::find();
-        foreach ($consulta as $cnv)
-        {
-            if($request->getPost('correo') == $cnv->getEmail())
-            {
-                $this->response(array("mensaje"=>"Correo repetido"),200);
-                exit();
-                break;
-            }
-        }
-
         $cdUser->save([
             "name"=>$request->getPost('PrimerNombre'),
             "second_name"=>$request->getPost('SegundoNombre'),
@@ -88,6 +76,27 @@ class UserController extends ControllerBase
                               "estatus"=>$consulta->getStatus()),
                               200);
     }
+    public function emailAction(){
+        $request = new Request();
+        if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
+        $email = $request->getPost("correo");
+        if(!$email)$this->response(array("message"=>"Value not found"),200);
+
+        $cd_user = CdUser::findFirst("email='$email'");
+        if(!$cd_user) $this->response(array("valid"=>true),200);
+        $this->response(array("valid"=>false),200);
+    }
+
+    public function usernameAction(){
+        $request = new Request();
+        if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
+        $username = $request->getPost('username');
+        if(!$username)$this->response(array("message"=>"Valor no encontrado"),200);
+
+        $consulta = CdUser::findFirst("username='$username'");
+        if(!$consulta)$this->response(array("valid"=>true),200);
+        $this->response(array("valid"=>false),200);
+    }
 
     public function ajaxactualizarAction()
     {
@@ -112,7 +121,8 @@ class UserController extends ControllerBase
 
         $this->response(array("message"=>"correcto",
                               "id"=>$request->getPost('id'),
-                              "nombre"=>$consulta->getName())
+                              "nombre"=>$consulta->getName(),
+                              "segundoNombre"=>$consulta->getSecondName())
                               ,200);
 
     }
