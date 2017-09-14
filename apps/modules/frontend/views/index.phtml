@@ -1,21 +1,28 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/myStyle.css')?>">
+    <title>central de noticias</title>
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/main.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/colors.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/responsive.css')?>">
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/font-awesome.css')?>">
-
-
-    <title>Central de noticias</title>
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/style.css')?>"
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/jquery-ui.min.css')?>"
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/weather-icons.min.css')?>"
   </head>
   <body>
         <?= $this->getContent() ?>
-        <script src="<?=$this->url->get('front/js/jquery.min.js')?>"></script>
-        <script src="<?=$this->url->get('front/js/popper.min.js')?>"></script>
-        <script src="<?=$this->url->get('front/js/bootstrap.min.js')?>"></script>
-        <script src="<?=$this->url->get('front/js/editable.js')?>"></script>
-        <script src="<?=$this->url->get('front/js/myAjax.js')?>"></script>
+
+        <script src="<?= $this->url->get('front/js/jquery.min.js') ?>"></script>
+        <script src="<?= $this->url->get('front/js/popper.min.js') ?>"></script>
+        <script src="<?= $this->url->get('front/js/bootstrap.min.js') ?>"></script>
+        <script src="<?=$this->url->get('front/js/jquery-ui.min.js')?>"></script>
+        <script src="<?=$this->url->get('front/js/plugins.js')?>"></script>
+        <script src="<?=$this->url->get('front/js/functions.js')?>"></script>
+
+
+
 
   </body>
 
