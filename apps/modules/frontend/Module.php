@@ -22,6 +22,7 @@ class Module implements ModuleDefinitionInterface
 
         $loader->registerNamespaces(array(
             'Modules\Frontend\Controllers' => __DIR__ . '/controllers/',
+            'Modules\Models\Red' => __DIR__ . '/../../models/red/',
             'Modules\Models' => __DIR__ . '/../../models/',
             'Modules\Models\Entities' => __DIR__ . '/../../models/entities/',
             'Modules\Models\Services' => __DIR__ . '/../../models/services/',
@@ -47,6 +48,14 @@ class Module implements ModuleDefinitionInterface
             },
             true
         );
+
+        $di->set('red',function (){
+            return new DbAdapter(array(
+                'host'        => 'localhost',
+                'username'    => 'root',
+                'password'    => '',
+                'dbname'      => 'cd_red'));
+        });
         $di->set('view', function() use ($config) {
             $view = new View();
             $view->setViewsDir(__DIR__ . '/views/');

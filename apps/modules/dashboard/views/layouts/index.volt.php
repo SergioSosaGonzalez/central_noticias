@@ -5,6 +5,7 @@
     <title></title>
 
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get("dash/css/bootstrap.min.css")?>">
+      <link rel="stylesheet" type="text/css" href="<?=$this->url->get("dash/css/animate.css")?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/font-awesome.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/chartist.min.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/ncms.min.css')?>">
@@ -15,10 +16,7 @@
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/myStyleUser.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/jquery.dataTables.min.css')?>">
       <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/formValidation.min.css')?>"
-
-
-
-
+      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/sweetalert2.min.css')?>"
   </head>
   <body class="dashboard warning-theme danger-complement primary-logo-demo using-loader">
   <!-- start of navbar -->
@@ -38,17 +36,7 @@
       </div>
       <!-- end of navbar-sidebar -->
       <!-- start of main menu -->
-      <ul class="nav navbar-nav float-xs-left main-menu">
-          <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-          </li>
-      </ul>
+
       <!-- end of main menu -->
       <!-- end of primary menu -->
       <div class="float-xs-right secondary-menu">
@@ -292,10 +280,7 @@
       </div>
       <!-- end of secondary menu -->
       <form class="float-md-right navbar-search">
-          <div class="float-xs-right input-with-icon mb-1">
-              <i class="material-icons">search</i>
-              <input type="search" class="form-control" placeholder="Search" />
-          </div>
+
       </form>
   </nav>
   <!-- end of navbar -->
@@ -304,90 +289,31 @@
   <div class="sidebar">
       <ul class="nav nav-sidebar">
           <li class="has-submenu expanded">
-              <a href="javascript:;">
+              <a href="/dashboard">
                   <i class="material-icons">dashboard</i><span>Dashboard</span>
               </a>
+          </li>
+          <li class="has-submenu">
+              <a href="javascript:;">
+                  <i class="fa fa-align-justify"></i><span>Categorias de noticias</span>
+              </a>
               <ul class="nav sub-menu">
-                  <li class="active"><a href="index.html">Dashboard 1</a>
-                  </li>
-                  <li><a href="index1.html">Dashboard 2</a>
-                  </li>
-                  <li><a href="index2.html">Dashboard 3</a>
+                  <li><a href="/dashboard/categorias-noticias">Ver categorias</a>
                   </li>
               </ul>
           </li>
           <li class="has-submenu">
               <a href="javascript:;">
-                  <i class="material-icons">insert_chart</i><span>Charts</span>
+                  <i class="fa fa-newspaper-o"></i><span>Noticias</span>
               </a>
               <ul class="nav sub-menu">
-                  <li><a href="chartist-js.html">Chartist JS</a>
+                  <li><a href="">Alta de noticias</a>
                   </li>
-                  <li><a href="chart-js.html">Chart JS</a>
-                  </li>
-                  <li><a href="flot-js.html">Flot JS</a>
-                  </li>
-                  <li><a href="morris-js.html">Morris JS</a>
+                  <li><a href="">Todas las noticias</a>
                   </li>
               </ul>
           </li>
-          <li class="has-submenu">
-              <span class="tag">2</span>
-              <a href="javascript:;">
-                  <i class="material-icons">mail_outline</i><span>Mailbox</span>
-              </a>
-              <ul class="nav sub-menu">
-                  <li><a href="compose.html">Compose</a>
-                  </li>
-                  <li><a href="mailbox.html">Inbox</a>
-                  </li>
-                  <li><a href="mailbox-reply.html">Reply</a>
-                  </li>
-                  <li><a href="mailbox-detail.html">Detail</a>
-                  </li>
-              </ul>
-          </li>
-          <li class="has-submenu">
-              <a href="javascript:;">
-                  <i class="icon-table2"></i><span>Tables</span>
-              </a>
-              <ul class="nav sub-menu">
-                  <li><a href="simple-tables.html">Simple Table</a>
-                  </li>
-                  <li><a href="data-tables.html">Data Table</a>
-                  </li>
-              </ul>
-          </li>
-          <li class="has-submenu">
-              <a href="javascript:;">
-                  <i class="fi-foot"></i><span>UI Element</span>
-              </a>
-              <ul class="nav sub-menu">
-                  <li><a href="ui-general.html">General</a>
-                  </li>
-                  <li><a href="ui-buttons.html">Buttons</a>
-                  </li>
-                  <li><a href="ui-typography.html">Typography</a>
-                  </li>
-                  <li><a href="icons.html">Icon</a>
-                  </li>
-                  <li><a href="cards.html">Cards</a>
-                  </li>
-              </ul>
-          </li>
-          <li class="has-submenu">
-              <a href="javascript:;">
-                  <i class="material-icons">border_color</i><span>Forms</span>
-              </a>
-              <ul class="nav sub-menu">
-                  <li><a href="general-form.html">General Forms</a>
-                  </li>
-                  <li><a href="advanced-form.html">Advanced Forms</a>
-                  </li>
-                  <li><a href="text-editor.html">Editors</a>
-                  </li>
-              </ul>
-          </li>
+
           <li class="has-submenu">
               <a href="javascript:;">
                   <i class="material-icons">person_add</i><span>Authentication</span>
@@ -399,52 +325,10 @@
                   </li>
               </ul>
           </li>
-          <li class="has-submenu">
-              <a href="javascript:;">
-                  <i class="material-icons">error</i><span>Error Pages</span>
-              </a>
-              <ul class="nav sub-menu">
-                  <li><a href="404page.html">404 Error</a>
-                  </li>
-                  <li><a href="500page.html">500 Error</a>
-                  </li>
-              </ul>
-          </li>
-          <li class="has-submenu">
-              <a href="javascript:;">
-                  <i class="material-icons">content_copy</i><span>Pages</span>
-              </a>
-              <ul class="nav sub-menu">
-                  <li><a href="timeline.html">Timeline</a>
-                  </li>
-                  <li><a href="profile.html">Profile</a>
-                  </li>
-                  <li><a href="comment.html">Comment</a>
-                  </li>
-                  <li><a href="blank.html">Blank Page</a>
-                  </li>
-              </ul>
-          </li>
-          <li class="has-submenu">
-              <a href="javascript:;">
-                  <i class="material-icons">check_box_outline_blank</i><span>Email Template</span>
-              </a>
-              <ul class="nav sub-menu">
-                  <li><a href="email.html">Blog Post</a>
-                  </li>
-                  <li><a href="email-clean.html">Product Template</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-              <a href="documentation/index.html">
-                  <i class="material-icons">library_books</i><span>Documentation</span>
-              </a>
-          </li>
 
           <li>
               <a href="javascript:;">
-                  <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i><span>Log Out</span>
+                  <a href="/logout"><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i><span>Log Out</span></a>
               </a>
           </li>
 
@@ -524,7 +408,7 @@
 
     <script src="/dash/js/tether.min.js"></script>
     <script src="/dash/js/bootstrap.min.js"></script>
-
+    <script src="/dash/js/category/category.js"></script>
     <script src="/dash/js/chart.min.js"></script>
     <script src="/dash/js/jquery.nicescroll.js"></script>
     <script src="/dash/js/jquery.scrollUp.min.js"></script>
@@ -534,9 +418,10 @@
     <script src="/dash/js/site-config.js"></script>
     <script src="<?=$this->url->get('dash/js/jquery.dataTables.min.js')?>"</script>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"/></script>
+    <script type="text/javascript" src="<?=$this->url->get('dash/js/loader.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/formValidation.min.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/bootstrapV.min.js')?>"></script>
+    <script src="<?=$this->url->get('dash/js/sweetalert2.all.js')?>"></script>
 
     <script>
         $(document).ready(function () {
@@ -672,6 +557,18 @@
                     dataType:"json",
                     success: function (resp) {
                         alert("Datos guardados correctamente");
+                        $("input[name=PrimerNombre]").val(" ");
+                        $("input[name=SegundoNombre]").val(" ");
+                        $("input[name=apellidos]").val(" ");
+                        $("input[name=sexo]").val(" ");
+                        $("input[name=telefono]").val(" ");
+                        $("input[name=username]").val(" ");
+                        $("input[name=contrasenia]").val("");
+                        $("input[name=correo]").val(" ");
+                        $("input[name=foto]").val(" ");
+                        $("input[name=fechaCreacion]").val(" ");
+
+
 
                     },error: function (jqXHR,estado,error) {
 

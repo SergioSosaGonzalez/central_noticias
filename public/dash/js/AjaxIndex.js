@@ -18,7 +18,6 @@ $(document).ready(function () {
                  },error:function () {
                  },complete:function(){
                  }
-
                });
            }else{
                alert("Se ha cancelado la accion");
@@ -76,7 +75,12 @@ $(document).ready(function () {
                   alert("Datos actualizados correctamente");
                   $("."+resp.id+" .primerNombre").text(resp.nombre);
                   $("."+resp.id+" .segundoNombre").text(resp.segundoNombre);
-
+                  $("."+resp.id+" .apellidos").text(resp.apellidos);
+                  $("."+resp.id+" .phone").text(resp.telefono);
+                  $("."+resp.id+" .username").text(resp.username);
+                  $("."+resp.id+" .correo").text(resp.correo);
+                  $("."+resp.id+" .date_creation").text(resp.fecha);
+                  $("."+resp.id+" .estado").text(resp.estado);
 
               },error: function () {
                },complete: function () {
@@ -100,8 +104,8 @@ $(document).ready(function () {
                   $("input[name=sex]").val(resp.sex);
                   $("input[name=telefono]").val(resp.phone);
                   $("input[name=username]").val(resp.username);
-                  $("input[name=email]").val(resp.username);
-                  $("input[name=rol]").val(resp.rol);
+                  $("input[name=email]").val(resp.email);
+                  $("select[name=rol]").val(resp.rol);
                   $("select[name=estatus]").val(resp.estatus);
                   $("select[name=ejecutivo]").val(resp.type_executive);
                   $("input[name=foto]").val(resp.photo);
@@ -111,45 +115,27 @@ $(document).ready(function () {
                }
            });
        });
+});
 
-       /*
-    $(document).on("submit","#form",function (e) {
-        var primerNombre =document.getElementsByName('PrimerNombre')[0].value;
-        var apellidos =document.getElementsByName('apellidos')[0].value;
-        var sex=document.getElementsByName('sexo')[0].value;
-        var tel =document.getElementsByName('telefono')[0].value;
-        var username =document.getElementsByName('username')[0].value;
-        var contrasenia=document.getElementsByName('contrasenia')[0].value;
-        var correo =document.getElementsByName('correo')[0].value;
-        var urlFoto =document.getElementsByName('foto')[0].value;
-        var fechaCreacion =document.getElementsByName('fechaCreacion')[0].value;
-        var cargo =document.getElementsByName('cargo')[0].value;
-
-        if(primerNombre=="" || apellidos==""||sex==""||tel==""||username==""||contrasenia==""||correo==""||urlFoto==""||fechaCreacion=="" ||cargo=="")
-        {
-        }else{
-        e.preventDefault();
+function permalink(selector,type,form){
+    selector.on('keyup',function(){
+        var title = $(this).val();
         $.ajax({
-          url:"/dashboard/user/ajax",
-          method:"post",
-          data:$(this).serialize(),
-          dataType:"json",
-          success: function (resp) {
-              console.log(resp);
-              if(resp.mensaje == "Correo repetido"){
-                  alert("Correo repetido")
-              }else {
-                  alert("Datos guardados correctamente");
-              }
-          },error: function (jqXHR,estado,error) {
-
-          },complete:function (jqXHR,estado) {
-          }
+            url : "/dashboard/validateurl",
+            type : "POST",
+            data : {title:title,type:type},
+            dataType : "json",
+            success : function(response){
+                if(response.message=="SUCCESS" && response.code==200){
+                    $("#"+type).val(response.new_url);
+                    form.formValidation('revalidateField', type);
+                }else{
+                    alert("Ha ocurrido un error intente nuevamente.");
+                }
+            },
+            complete: function(){
+            }
         });
-      }
     });
-*/
-
-
-})
+}
 

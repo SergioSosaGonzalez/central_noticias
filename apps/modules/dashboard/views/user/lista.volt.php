@@ -54,9 +54,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="position: relative; top:30px;">
                                 <label>Rol:</label>
-                                <input name="rol" type="text" class="form-control">
+                                <select name="rol" >
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="GUESTS">GUESTS</option>
+                                    <option value="COORDINATOR">COORDINATOR</option>
+                                    <option value="USER">USER</option>
+                                    <option value="CONTACT">CONTACT</option>
+                                </select>
                             </div>
                             <div class="col-md-6">
                                 <label>Foto:</label>

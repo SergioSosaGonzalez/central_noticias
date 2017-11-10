@@ -19,7 +19,9 @@ body{
 .row{
     text-align: center;
 }
-
+.form-control{
+    text-align: center;
+}
 #datosUsuario{
     position: relative;
     top:20px;

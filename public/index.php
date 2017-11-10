@@ -23,6 +23,21 @@ $di->set('router', function(){
         'action' => 'index',
     ));
 
+    $router->add("/apiconsulta", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'apiconsulta',
+    ));
+
+    $router->add("/output", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'output',
+    ));
+
+
+
+
 /*Secciones*/
     $router->add('/([0-9-a-zA-Z\-]+)', array(
         'module'=>'frontend',
@@ -39,6 +54,8 @@ $di->set('router', function(){
         'controller' => 'index',
         'action' => 'index',
     ));
+
+
 
     $router->add("/login", array(
         'module'=>'dashboard',
@@ -57,6 +74,26 @@ $di->set('router', function(){
     ))->setName("controllers")->convert('action', function($action) {
         return \Phalcon\Text::lower(\Phalcon\Text::camelize($action));
     });
+    $router->add("/apibuscarnombre/{name}", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'apibuscarnombre',
+    ));
+    $router->add("/apibuscarid/{id:[0-9]+}", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'apibuscarid',
+    ));
+    $router->add("/data/{id:[0-9]+}", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'data',
+    ));
+    $router->add("/apidelete/{id:[0-9]+}", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'apidelete',
+    ));
 
     $router->add("/login/ajax",array(
         'module'=>'dashboard',
@@ -68,9 +105,22 @@ $di->set('router', function(){
         'controller' => 'user',
         'action' => 'lista',
     ));
+
+    $router->add("/dashboard/validateurl",array(
+        'module'=>'dashboard',
+        'controller' => 'index',
+        'action' => 'validateurl',
+    ));
     $router->add("/dashboard/usuarios",array(
         'module'=>'dashboard',
         'controller' => 'user',
+        'action' => 'index',
+    ));
+
+
+    $router->add("/dashboard/categorias-noticias", array(
+        'module'=>'dashboard',
+        'controller' => 'category',
         'action' => 'index',
     ));
     $router->add('/dashboard/([0-9-a-zA-Z\-]+)/([0-9-a-zA-Z\-]+)', array(
@@ -80,6 +130,41 @@ $di->set('router', function(){
     ))->setName("controllers")->convert('action', function($action) {
         return \Phalcon\Text::lower(\Phalcon\Text::camelize($action));
     });
+    $router->add("/dashboard/categorias-noticias/newcategory",array(
+        'module'=>'dashboard',
+        'controller' => 'category',
+        'action' => 'newcategory',
+    ));
+    $router->add("/dashboard/categorias-noticias/newsubcategory",array(
+        'module'=>'dashboard',
+        'controller' => 'category',
+        'action' => 'newsubcategory',
+    ));
+
+    $router->add("/dashboard/categorias-noticias/consultardatos",array(
+        'module'=>'dashboard',
+        'controller' => 'category',
+        'action' => 'consultardatos',
+    ));
+
+    $router->add("/dashboard/categorias-noticias/editsubcategory",array(
+        'module'=>'dashboard',
+        'controller' => 'category',
+        'action' => 'editcategory',
+    ));
+
+    $router->add("/dashboard/categorias-noticias/editsubcategory/deletecategories",array(
+        'module'=>'dashboard',
+        'controller' => 'category',
+        'action' => 'deletecategories',
+    ));
+
+    $router->add("/dashboard/categorias-noticias/subcategorias/([0-9]+)",array(
+        'module'=>'dashboard',
+        'controller' => 'category',
+        'action' => 'subcategory',
+        'id'=>1
+    ));
 
 
     return $router;
@@ -115,6 +200,8 @@ $di->set('cookies', function () {
     $cookies->useEncryption(false);
     return $cookies;
 });
+
+
 //Pass the DI to the application
 $application->setDI($di);
 

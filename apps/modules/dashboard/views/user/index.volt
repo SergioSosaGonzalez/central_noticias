@@ -70,7 +70,7 @@
             <select name="rol">
                 <option value="ADMIN">ADMIN</option>
                 <option value="GUESTS">GUESTS</option>
-                <option value="COORDINATIOR">COORDINATIOR</option>
+                <option value="COORDINATOR">COORDINATOR</option>
                 <option value="USER">USER</option>
                 <option value="CONTACT">CONTACT</option>
             </select>

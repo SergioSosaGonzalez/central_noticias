@@ -142,9 +142,14 @@ class UserController extends ControllerBase
         $this->response(array("message"=>"correcto",
                               "id"=>$request->getPost('id'),
                               "nombre"=>$consulta->getName(),
-                              "segundoNombre"=>$consulta->getSecondName())
+                              "segundoNombre"=>$consulta->getSecondName(),
+                              "apellidos"=>$consulta->getLastName(),
+                              "telefono"=>$consulta->getPhone(),
+                              "username"=>$consulta->getUsername(),
+                              "correo"=>$consulta->getEmail(),
+                              "fecha"=>$consulta->getDateCreation(),
+                              "estado"=>$consulta->getStatus())
                               ,200);
-
     }
     public function ajaxdeleteAction(){
 
