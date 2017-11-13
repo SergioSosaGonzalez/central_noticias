@@ -12,6 +12,7 @@ class LoginController extends \Phalcon\Mvc\Controller
 
         $this->view->setLayout('login');
         $this->_registerToken();
+
     }
     public function indexAction(){
 

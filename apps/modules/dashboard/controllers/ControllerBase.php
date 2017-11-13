@@ -1,5 +1,6 @@
 <?php
 namespace Modules\Dashboard\Controllers;
+use Phalcon\Assets\Filters\Cssmin;
 use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller{
@@ -21,6 +22,26 @@ class ControllerBase extends Controller{
                     ->addJs("dash/js/jquery.dataTables.min.js")
                     ->join(true)
                     ->addFilter(new \Phalcon\Assets\Filters\Jsmin());
+
+       $this->assets->collection('CssIndex')
+                    ->setTargetPath("dash/css/general.min.css")
+                    ->setTargetUri("dash/css/general.min.css")
+                    ->addCss("dash/css/bootstrap.min.css")
+                    ->addCss("dash/css/animate.css")
+                    ->addCss("dash/css/font-awesome.css")
+                    ->addCss("dash/css/chartist.min.css")
+                    ->addCss("dash/css/ncms.min.css")
+                    ->addCss("dash/css/pace.min.css")
+                    ->addCss("dash/css/site.min.css")
+                    ->addCss("dash/css/icomoon.css")
+                    ->addCss("dash/css/jquery.scrollUp.css")
+                    ->addCss("dash/css/myStyleUser.css")
+                    ->addCss("dash/css/jquery.dataTables.min.css")
+                    ->addCss("dash/css/formValidation.min.css")
+                    ->addCss("dash/css/sweetalert2.min.css")
+                    ->addCss("dash/bower_components/dropzone/dist/dropzone.css")
+                    ->join(true)
+                    ->addFilter(new Cssmin());
    $this->view->setLayout("index");
 
 

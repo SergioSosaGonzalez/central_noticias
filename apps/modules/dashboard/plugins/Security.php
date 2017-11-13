@@ -43,7 +43,9 @@ class Security extends Plugin {
             $adminResources = array(
                 "user"=>array("deleteuser","newuser","index","saveuser","edit","inactive","activity"),
                 "reports"=>array("index","general","generatetwo","generatethree","generatefour","downloadxlsgeneral","downloadxlsuser","downloadxlsresults","reportschool","downloadxlsresultsschools","downloadxlsgeneralschool","downloadxlsschoolsemester","downloadxlslastresult"),
-                "category"=>array("index","newcategory","subcategory","newsubcategory","editcategory","consultardatos","deletecategories")
+                "category"=>array("index","newcategory","subcategory","newsubcategory","editcategory","consultardatos","deletecategories"),
+                "news"=>array("index","createnew","nuevanoticia","editnew","updatenew")
+
             );
             foreach($adminResources as $resource => $actions){
                 $acl->addResource(new \Phalcon\Acl\Resource($resource),$actions);
@@ -58,7 +60,7 @@ class Security extends Plugin {
                 $acl->addResource(new \Phalcon\Acl\Resource($resource),$actions);
             };
             $userResources = array(
-                "index"=>array("index","validateurl"),
+                "index"=>array("index","validateurl","uploadimage","deleteimage","consultarcategory"),
                 "school"=>array("index","new","delete","save","edit","update","validatename"),
                 "careers"=>array("index","new","delete","save","edit","update","validatename","permalink"),
                 "cycle"=>array("index","new","delete","save","edit","update","validatename","permalink"),

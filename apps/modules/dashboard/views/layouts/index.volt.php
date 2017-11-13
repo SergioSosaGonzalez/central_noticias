@@ -3,21 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get("dash/css/bootstrap.min.css")?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get("dash/css/animate.css")?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/font-awesome.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/chartist.min.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/ncms.min.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/pace.min.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/site.min.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/icomoon.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/jquery.scrollUp.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/myStyleUser.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/jquery.dataTables.min.css')?>">
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/formValidation.min.css')?>"
-      <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/sweetalert2.min.css')?>"
-  </head>
+      
+         <?= $this->assets->outputCss('CssIndex') ?>
+      
+      </head>
   <body class="dashboard warning-theme danger-complement primary-logo-demo using-loader">
   <!-- start of navbar -->
   <nav class="navbar navbar-fixed-top">
@@ -307,9 +296,9 @@
                   <i class="fa fa-newspaper-o"></i><span>Noticias</span>
               </a>
               <ul class="nav sub-menu">
-                  <li><a href="">Alta de noticias</a>
+                  <li><a href="/dashboard/crear-noticia">Alta de noticias</a>
                   </li>
-                  <li><a href="">Todas las noticias</a>
+                  <li><a href="/dashboard/lista-noticias">Todas las noticias</a>
                   </li>
               </ul>
           </li>
@@ -409,14 +398,21 @@
     <script src="/dash/js/tether.min.js"></script>
     <script src="/dash/js/bootstrap.min.js"></script>
     <script src="/dash/js/category/category.js"></script>
+    <script src="/dash/js/ckeditor/ckeditor.js"></script>
+    <script src="/dash/js/news/news.js"></script>
     <script src="/dash/js/chart.min.js"></script>
     <script src="/dash/js/jquery.nicescroll.js"></script>
     <script src="/dash/js/jquery.scrollUp.min.js"></script>
     <script src="/dash/js/js.cookie.js"></script>
     <script src="/dash/js/pace.min.js"></script>
     <script src="/dash/js/ncms.min.js"></script>
+    <script src="/dash/js/uploadimage.js"></script>
+
     <script src="/dash/js/site-config.js"></script>
+    <script src="/dash/bower_components/dropzone/dist/min/dropzone.min.js"></script>
     <script src="<?=$this->url->get('dash/js/jquery.dataTables.min.js')?>"</script>
+
+
 
     <script type="text/javascript" src="<?=$this->url->get('dash/js/loader.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/formValidation.min.js')?>"></script>

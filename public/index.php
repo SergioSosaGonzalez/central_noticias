@@ -105,6 +105,13 @@ $di->set('router', function(){
         'controller' => 'user',
         'action' => 'lista',
     ));
+    $router->add("/dashboard/lista-noticias",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'index',
+    ));
+
+
 
     $router->add("/dashboard/validateurl",array(
         'module'=>'dashboard',
@@ -116,7 +123,6 @@ $di->set('router', function(){
         'controller' => 'user',
         'action' => 'index',
     ));
-
 
     $router->add("/dashboard/categorias-noticias", array(
         'module'=>'dashboard',
@@ -130,6 +136,13 @@ $di->set('router', function(){
     ))->setName("controllers")->convert('action', function($action) {
         return \Phalcon\Text::lower(\Phalcon\Text::camelize($action));
     });
+    $router->add("/dashboard/editar-noticia/([0-9]+)",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'editnew',
+        'id'=>1
+    ));
+
     $router->add("/dashboard/categorias-noticias/newcategory",array(
         'module'=>'dashboard',
         'controller' => 'category',
@@ -152,12 +165,52 @@ $di->set('router', function(){
         'controller' => 'category',
         'action' => 'editcategory',
     ));
+    $router->add("/dashboard/crear-noticia",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'createnew',
+    ));
+
+    $router->add("/uploadimage",array(
+        'module'=>'dashboard',
+        'controller' => 'index',
+        'action' => 'uploadimage',
+    ));
+
+    $router->add("/deleteimage",array(
+        'module'=>'dashboard',
+        'controller' => 'index',
+        'action' => 'deleteimage',
+    ));
+
+    $router->add("/consultar-category",array(
+        'module'=>'dashboard',
+        'controller' => 'index',
+        'action' => 'consultarcategory',
+    ));
+
+
+    $router->add("/dashboard/updatenew",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'updatenew',
+    ));
+
+    $router->add("/dashboard/crear-noticia/nuevanoticia",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'nuevanoticia',
+    ));
+
+
 
     $router->add("/dashboard/categorias-noticias/editsubcategory/deletecategories",array(
         'module'=>'dashboard',
         'controller' => 'category',
         'action' => 'deletecategories',
     ));
+
+
 
     $router->add("/dashboard/categorias-noticias/subcategorias/([0-9]+)",array(
         'module'=>'dashboard',
