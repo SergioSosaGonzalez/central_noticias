@@ -2,6 +2,7 @@
 namespace Modules\Dashboard\Controllers;
 use Modules\Dashboard\Plugins\Security;
 use Modules\Models\CdCategory;
+use Modules\Models\CdEnterprise;
 use Modules\Models\CdGallery;
 use Modules\Models\CdNews;
 use Modules\Models\CdPeriodico;
@@ -20,6 +21,26 @@ class NewsController extends ControllerBase
     public  function createnewAction(){
          $category= CdCategory::find();
          $this->view->setVar("categoria",$category);
+         $enterprise= CdEnterprise::find();
+         $this->view->setVar("empresa",$enterprise);
+    }
+
+    public function newenterpriseAction(){
+        $request= new Request();
+        if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
+        $enterprise = new CdEnterprise();
+        $enterprise->save([
+            "name"=>$request->getPost('name_enterprise'),
+            "date_creation"=> date("Y:m:d h:i:s")
+        ]);
+
+        $consulta = CdEnterprise::find();
+        $html = array();
+        foreach ($consulta as $key):
+             $html[]="<option value=".$key->getEntid().">".$key->getName()."</option>";
+        endforeach;
+        $this->response(array("message"=>"correcto","html"=>$html),200);
+
     }
 
     public function nuevanoticiaAction(){
@@ -37,7 +58,8 @@ class NewsController extends ControllerBase
             "type"=>$request->getPost('type'),
             "author"=>$request->getPost('author'),
             "date_creation"=>date("Y:m:d H:i:s"),
-            "subid"=>$request->getPost('subid')
+            "subid"=>$request->getPost('subid'),
+            "visits"=>0
         ]);
         $consultaNew = CdNews::find();
         $newid=0;
@@ -46,12 +68,12 @@ class NewsController extends ControllerBase
         endforeach;
        $periodico = new CdPeriodico();
        $periodico->save([
-           "name"=>$request->getPost("periodico"),
            "uid"=>$auth['uid'],
-           "newid"=>$newid
-
+           "newid"=>$newid,
+           "entid"=>$request->getPost('entid')
        ]);
 
+       if($request->getPost('image-3')!=null){
        $array_imagenes= $request->getPost('image-3');
        foreach ($array_imagenes as $key=>$i):
              $gallery= new CdGallery();
@@ -60,7 +82,8 @@ class NewsController extends ControllerBase
              $gallery->setNewid($newid);
              $gallery->save();
        endforeach;
-
+           $this->response(array("message"=>"correcto con galeria"),200);
+       }
         $this->response(array("message"=>"correcto"),200);
     }
 
@@ -94,6 +117,22 @@ class NewsController extends ControllerBase
         $news->setSubid($request->getPost('subid'));
         $news->save();
         $this->response(array("message"=>"correcto"),200);
+
+    }
+
+    public function deletenewAction()
+    {
+        $request= new Request();
+        if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
+        $gallery=CdGallery::find("newid=".$request->getPost('id'));
+        foreach ($gallery as $cnv):
+            $cnv->delete();
+            endforeach;
+         $periodico = CdPeriodico::findFirst("newid=".$request->getPost('id'));
+         $periodico->delete();
+        $new = CdNews::findFirst("newid=".$request->getPost('id'));
+        $new->delete();
+        $this->response(array("message"=>"correcto","id"=>$request->getPost('id')),200);
     }
 }
 

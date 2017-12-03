@@ -63,6 +63,8 @@
 			unpinned: "headroom-unpinned"
 		}
 	});
+
+
 	
 	// affix
 	$('#fixed-navbar').affix({

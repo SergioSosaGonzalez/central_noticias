@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="module-title">
+        <h1 class="title"><span class="bg-1"><?=$nombre?></span></h1>
+    </div>
+ <div class="row no-gutter">
+     <div class="col-sm-6 col-md-6">
+         <div class="news">
+            <?php foreach ($news as $key): ?>
+            <div class="item" style="width: 116%">
+                <div class="item-image-1">
+                    <a class="img-link" href="#">
+                        <img class="img-responsive img-full" src="/dash/src/<?=$key->getImages()?>" alt="">
+                    </a>
+                </div>
+                <div class="item-content">
+                    <div class="title-left title-style04 underline04">
+                        <h3><a href="/ver-noticias/<?=$permalink?>/<?=$key->getPermalink()?>"><?=$key->getTitle()?></a></h3>
+                    </div>
+                    <p><a href="/ver-noticias/<?=$permalink?>/<?=$key->getPermalink()?>" target="_blank"><?=$key->getDescription()?></a></p>
+                    <div>
+                        <a href="/ver-noticias/<?=$permalink?>/<?=$key->getPermalink()?>" target="_blank"><span class="read-more">News</span></a>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach;?>
+         </div>
+     </div>
+ </div>
+</div>

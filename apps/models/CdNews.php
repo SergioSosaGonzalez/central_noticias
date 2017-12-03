@@ -90,6 +90,13 @@ class CdNews extends \Phalcon\Mvc\Model
     protected $subid;
 
     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=11, nullable=true)
+     */
+    protected $visits;
+
+    /**
      * Method to set the value of field newid
      *
      * @param integer $newid
@@ -246,6 +253,19 @@ class CdNews extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field visits
+     *
+     * @param integer $visits
+     * @return $this
+     */
+    public function setVisits($visits)
+    {
+        $this->visits = $visits;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field newid
      *
      * @return integer
@@ -363,6 +383,16 @@ class CdNews extends \Phalcon\Mvc\Model
     public function getSubid()
     {
         return $this->subid;
+    }
+
+    /**
+     * Returns the value of field visits
+     *
+     * @return integer
+     */
+    public function getVisits()
+    {
+        return $this->visits;
     }
 
     /**

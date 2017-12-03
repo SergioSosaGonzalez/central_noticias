@@ -5,7 +5,7 @@
 <div class="card">
     </br>
     <form id="editNew">
-        <input type="hidden" value="<?=$id?>" name="id">
+        <input type="hidden" value="<?=$id?>" name="id" id="id">
         <div class="form-group">
             <div class="row">
                 <label class="label col-md-2">Titulo:</label>
@@ -71,14 +71,15 @@
                 <label class="col-md-2 control-label">Galeria:</label>
                 <div class="col-md-8 col-xs-12">
                     <div id="editGallery" class="dropzone">
-                        <div class="dz-default dz-message" id="content-image">
-                            <h2 style="text-align:center;position: relative;top:-30px;" id="content-image">
+                        <div class="dz-default dz-message" >
+                            <h2 style="text-align:center;position: relative;top:-30px;" id="content-image-g">
                                 <i class="fa fa-cloud-upload" style="font-size: 88px;"></i><br>
                                 Arrastra una imagen<br><i style="font-size: 14px">o haz click para seleccionar manualmente</i>
                             </h2>
                             <?php foreach ($gallery as $cnv): ?>
-                                <input type="hidden" value="<?=$cnv->getImg()?>" name="image-3[]">
+                                <input type="hidden" value="<?=$cnv->getImg()?>" name="image-3[]" data-id="<?=$cnv->getGallid()?>">
                             <?php endforeach;?>
+
                         </div>
 
                     </div>

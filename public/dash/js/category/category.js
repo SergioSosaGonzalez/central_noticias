@@ -99,9 +99,10 @@ $(document).ready(function () {
                    '<td>'+resp.permalink+'</td>'+
                    '<td>' +
                        '<button type="button" id="bActualizarContra" class="btn btn-sm btn-warning">' +
-                       '<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>' +
+                       '<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></button>'+
+                       '<button type="button" class="btn btn-sm btn-danger">' +
+                       '<i class="fa fa-times" aria-hidden="true"></i>' +
                        '</button>'+
-                       '<button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>'+
                     '</td>'+
                     '</tr>'
                    )

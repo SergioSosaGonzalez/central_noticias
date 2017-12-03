@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Dashboard</title>
       
          <?= $this->assets->outputCss('CssIndex') ?>
       
-      </head>
+  </head>
   <body class="dashboard warning-theme danger-complement primary-logo-demo using-loader">
   <!-- start of navbar -->
   <nav class="navbar navbar-fixed-top">
@@ -399,6 +399,7 @@
     <script src="/dash/js/bootstrap.min.js"></script>
     <script src="/dash/js/category/category.js"></script>
     <script src="/dash/js/ckeditor/ckeditor.js"></script>
+    <script src="/dash/js/ckeditor/adapters/jquery.js"></script>
     <script src="/dash/js/news/news.js"></script>
     <script src="/dash/js/chart.min.js"></script>
     <script src="/dash/js/jquery.nicescroll.js"></script>

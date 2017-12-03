@@ -107,10 +107,17 @@
                 <div class="col-md-3 col-xs-12">
                     <input type="text" class="form-control" name="author" placeholder="nombre del autor">
                 </div>
-                <label class="col-md-2 control-label">Periodico:</label>
+                <label class="col-md-1 control-label">Periodico:</label>
                 <div class="col-md-3 col-xs-12">
-                    <input type="text" class="form-control" name="periodico" placeholder="nombre del periodico encargado">
+                    <select name="entid" id="entid" class="form-control">
+                       <?php foreach ($empresa as $key): ?>
+                        <option value="<?=$key->getEntid()?>"><?=$key->getName()?></option>
+                       <?php endforeach; ?>
+                    </select>
                 </div>
+                <a class="col-md-1 fa fa-plus-circle" data-toggle="modal" data-target="#myEnterprise" style="position: relative;right: 2pc;top:10px"></a>
+
+
             </div>
         </div>
         </br>
@@ -124,4 +131,42 @@
         </div>
 
     </form>
+</div>
+
+
+<div class="modal fade" id="myEnterprise" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Nueva Empresa</h4>
+            </div>
+            <form id="newEnterprise">
+                <div class="modal-body">
+                    <!--===================================Div principal del modal para hacer el formulario======================================-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Nombre:</label>
+                                <input type="text" class="form-control" name="name_enterprise">
+                            </div>
+                            <br>
+                            <div class="col-md-12">
+                                <label>Repetir nombre:</label>
+                                <input type="text" class="form-control" name="repit_name">
+                            </div>
+                        </div>
+                    </div>
+                    <!--=========================================================================================================================-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

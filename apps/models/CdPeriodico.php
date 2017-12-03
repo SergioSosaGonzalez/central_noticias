@@ -14,13 +14,6 @@ class CdPeriodico extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var string
-     * @Column(type="string", length=75, nullable=true)
-     */
-    protected $name;
-
-    /**
-     *
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
@@ -34,6 +27,13 @@ class CdPeriodico extends \Phalcon\Mvc\Model
     protected $newid;
 
     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=11, nullable=false)
+     */
+    protected $entid;
+
+    /**
      * Method to set the value of field perid
      *
      * @param integer $perid
@@ -42,19 +42,6 @@ class CdPeriodico extends \Phalcon\Mvc\Model
     public function setPerid($perid)
     {
         $this->perid = $perid;
-
-        return $this;
-    }
-
-    /**
-     * Method to set the value of field name
-     *
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
 
         return $this;
     }
@@ -86,6 +73,19 @@ class CdPeriodico extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field entid
+     *
+     * @param integer $entid
+     * @return $this
+     */
+    public function setEntid($entid)
+    {
+        $this->entid = $entid;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field perid
      *
      * @return integer
@@ -93,16 +93,6 @@ class CdPeriodico extends \Phalcon\Mvc\Model
     public function getPerid()
     {
         return $this->perid;
-    }
-
-    /**
-     * Returns the value of field name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -126,12 +116,23 @@ class CdPeriodico extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field entid
+     *
+     * @return integer
+     */
+    public function getEntid()
+    {
+        return $this->entid;
+    }
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
     {
         $this->setSchema("concentrado_noticias");
         $this->setSource("cd_periodico");
+        $this->belongsTo('entid', '\CdEnterprise', 'entid', ['alias' => 'CdEnterprise']);
         $this->belongsTo('newid', '\CdNews', 'newid', ['alias' => 'CdNews']);
         $this->belongsTo('uid', '\CdUser', 'uid', ['alias' => 'CdUser']);
     }

@@ -65,7 +65,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label>Permalink: </label>
-                                <input type="text" name="permalinkSubCategory" class="form-control permalinkSubCategory" readonly>
+                                <input type="text" id="permalinkSubCategory" name="permalinkSubCategory" class="form-control permalinkSubCategory" readonly>
                             </div>
                         </div>
                     </div>

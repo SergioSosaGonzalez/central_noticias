@@ -1444,7 +1444,7 @@ blockquote img {
     	2.0 - Header
     -----------------------------------------------------------------*/
 header {
-	height: 250px;
+	height: 183px;
 }
 /* 2.1 - Top-menu 
     ---------------------------------------------------------------------- */
@@ -1469,9 +1469,15 @@ header {
 	color: #BBBABB;
 	display: inline-block;
 	padding: 0 15px;
-	height: 40px;
+	height: 35px;
 	line-height: 40px;
 	border-left: 1px solid #4c4c59;
+}
+
+.social_networks{
+	position:relative;
+	top:10px;
+
 }
 .top-menu ul li a:hover {
 	color: #FFF !important;
@@ -1549,6 +1555,8 @@ header {
 	border: none;
 	width: 300px;
 	position: relative;
+	left:450px;
+	margin:10px;
 }
 .header-logo h1 {
 	color: #818285;
@@ -5109,9 +5117,13 @@ textarea {
 .news-slider-layer.third {
 	margin-bottom: 1%;
 }
-.news-slider-layer.fourth, .news-slider-layer.third {
+.news-slider-layer.fourth {
+	width: 53%;
+}
+.news-slider-layer.third {
 	width: 30%;
 }
+
 .news-slider-layer.fourth a .content, .news-slider-layer.third a .content {
 	font-size: 1.7em;
 }
@@ -5634,6 +5646,32 @@ textarea {
 	height: 40px;
 	margin: 10px auto;
 }
+.first img{
+	width: 55pc;
+	height: 30pc;
+}
+.second img{
+	width:30pc;
+	height: 10pc;
+}
+.third img{
+	width:25pc;
+	height: 10pc;
+}
+.fourth img{
+	width:590pc;
+	height: 19pc;
+}
+.tamanioLetra{
+	font-size: 10px;
+}
+.scroll_barNews{
+	width: 100%;
+	overflow-y:scroll;
+	height: 100px;
+
+}
+
 /* ----------------------------------------------------------------
     	16.0 - Coming Soon Page End
     -----------------------------------------------------------------*/

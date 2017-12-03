@@ -10,14 +10,397 @@
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/style.css')?>"
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/jquery-ui.min.css')?>"
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/weather-icons.min.css')?>"
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/owl.carousel.min.css')?>"
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/owl.theme.default.min.css')?>"
   </head>
   <body>
-        <?= $this->getContent() ?>
+  <div id="pageloader">
+      <div class="loader-item">
+          <img src="/front/img/load.gif" alt='loader' />
+      </div>
+  </div>
+  <div id="wrapper" data-color="red">
+      <header id="header">
+          <!-- Begin .top-menu -->
+          <div class="top-menu" wp-site-content>
+              <!-- Begin .container -->
+              <div class="container">
+                  <!-- Begin .left-top-menu -->
+                  <ul class="left-top-menu">
+                      <li>
+                          <a href="#" class="facebook"><i class="fa fa-facebook  social_networks"></i></a>
+                      </li>
+                      <li>
+                          <a href="#" class="twitter"><i class="fa fa-twitter  social_networks"></i></a>
+                      </li>
+                      <li>
+                          <a href="#" class="youtube"> <i class="fa fa-youtube  social_networks"></i></a>
+                      </li>
+                      <li>
+                          <a href="#" class="google-plus"><i class="fa fa-google-plus social_networks"></i></a>
+                      </li>
+                      <li>
+                          <a href="#" class="linkedin"><i class="fa fa-linkedin  social_networks"></i></a>
+                      </li>
+                      <li>
+                          <a href="#" class="instagram"> <i class="fa fa-instagram  social_networks"></i></a>
+                      </li>
+                      <li class="address">
+                          <a href="#"><i class="fa fa-phone"></i> +00 (123) 456 7890</a>
+                      </li>
+                      <li class="address">
+                          <a href="#"><i class="fa fa-envelope-o"></i> info@domain.com</a>
+                      </li>
+                  </ul>
+                  <!-- End .left-top-menu -->
+                  <!-- Begin .right-top-menu -->
+                  <ul class="right-top-menu pull-right">
+                      <li class="contact">
+                          <a href="contact.html"><i class="fa fa-map-marker fa-i  social_networks"></i></a>
+                      </li>
+                      <li class="about">
+                          <a href="about-us.html"><i class="fa fa-user fa-i  social_networks"></i></a>
+                      </li>
+                      <li>
+                          <div class="search-container">
+                              <div class="search-icon-btn">
+                                  <span style="cursor:pointer"><i class="fa fa-search"></i></span>
+                              </div>
+                              <div class="search-input">
+                                  <input type="search" class="search-bar" placeholder="Search..." title="Search" />
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+                  <!-- End .right-top-menu -->
+              </div>
+              <!-- End .container -->
+          </div>
+          <!-- End .top-menu -->
+          <!-- Begin .container -->
+          <div class="container">
+              <!-- Begin .header-logo -->
+              <div class="header-logo">
+                  <h1>Central de noticias</h1>
+              </div>
+              <!-- End .header-logo -->
+              <!-- Begin .header-add-place -->
+              <div class="header-add-place">
+                  <div class="desktop-add">
+                      <a href="https://themeforest.net/item/24h-news-broadcast-news-tv-channel-news-magazine-template/18614179" target="_blank">
+                          <img src="img/banner_728x90.jpg" alt="">
+                      </a>
+                  </div>
+              </div>
+              <!-- End .header-add-place -->
+              <!--========== BEGIN .NAVBAR #MOBILE-NAV ==========-->
+              <nav class="navbar navbar-default" id="mobile-nav">
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" id="sidenav-toggle">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                      <div class="sidenav-header-logo">
+                      </div>
+                  </div>
+                  <div class="sidenav" data-sidenav data-sidenav-toggle="#sidenav-toggle">
+                      <button type="button" class="navbar-toggle active" data-toggle="collapse">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+
+                      <ul class="sidenav-menu">
+                          <li>
+                              <a href="index.html" class="active">Home</a>
+                              <div class="icon-sub-menu" data-sidenav-dropdown-toggle>
+                                  <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon></span>
+                                  <span class="sidenav-dropdown-icon up-icon" data-sidenav-dropdown-icon></span>
+                              </div>
+                              <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                                  <li>
+                                      <a href="watch-live.html">Watch Live 24/7</a>
+                                  </li>
+                                  <li>
+                                      <a href="24-tv-radio.html">24 TV & Radio</a>
+                                  </li>
+                                  <li>
+                                      <a href="web-shows.html">Web Shows</a>
+                                  </li>
+                                  <li>
+                                      <a href="24-news-store.html">24 News Store</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="world.html">World</a>
+                              <div class="icon-sub-menu" data-sidenav-dropdown-toggle>
+                                  <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon></span>
+                                  <span class="sidenav-dropdown-icon up-icon" data-sidenav-dropdown-icon></span>
+                              </div>
+                              <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                                  <li>
+                                      <a href="africa.html">Africa</a>
+                                  </li>
+                                  <li>
+                                      <a href="antarctica.html">Antarctica</a>
+                                  </li>
+                                  <li>
+                                      <a href="asia.html">Asia</a>
+                                  </li>
+                                  <li>
+                                      <a href="australia.html">Australia</a>
+                                  </li>
+                                  <li>
+                                      <a href="europe.html">Europe</a>
+                                  </li>
+                                  <li>
+                                      <a href="middle-east.html">Middle East</a>
+                                  </li>
+                                  <li>
+                                      <a href="north-america.html">North America</a>
+                                  </li>
+                                  <li>
+                                      <a href="south-america.html">South America</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="news.html">News</a>
+                              <div class="icon-sub-menu" data-sidenav-dropdown-toggle>
+                                  <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon></span>
+                                  <span class="sidenav-dropdown-icon up-icon" data-sidenav-dropdown-icon></span>
+                              </div>
+                              <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                                  <li>
+                                      <a href="politics.html">Politics</a>
+                                  </li>
+                                  <li>
+                                      <a href="business.html">Business</a>
+                                  </li>
+                                  <li>
+                                      <a href="tech-science.html">Tech-Science</a>
+                                  </li>
+                                  <li>
+                                      <a href="lifestyle.html">Lifestyle</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="sport.html">Sport</a>
+                              <div class="icon-sub-menu" data-sidenav-dropdown-toggle>
+                                  <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon></span>
+                                  <span class="sidenav-dropdown-icon up-icon" data-sidenav-dropdown-icon></span>
+                              </div>
+                              <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                                  <li>
+                                      <a href="americanfootball.html">American Football</a>
+                                  </li>
+                                  <li>
+                                      <a href="soccer.html">Soccer</a>
+                                  </li>
+                                  <li>
+                                      <a href="basketball.html">Basketball</a>
+                                  </li>
+                                  <li>
+                                      <a href="formula-1.html">Formula 1</a>
+                                  </li>
+                                  <li>
+                                      <a href="tennis.html">Tennis</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="health.html">Health</a>
+                              <div class="icon-sub-menu" data-sidenav-dropdown-toggle>
+                                  <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon></span>
+                                  <span class="sidenav-dropdown-icon up-icon" data-sidenav-dropdown-icon></span>
+                              </div>
+                              <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                                  <li>
+                                      <a href="health-home.html">Health Home</a>
+                                  </li>
+                                  <li>
+                                      <a href="men-health.html">Men's Health</a>
+                                  </li>
+                                  <li>
+                                      <a href="women-health.html">Women's Health</a>
+                                  </li>
+                                  <li>
+                                      <a href="children-health.html">Children's Health</a>
+                                  </li>
+                                  <li>
+                                      <a href="alternative-medicine.html">Alternative Medicine</a>
+                                  </li>
+                                  <li>
+                                      <a href="nutrition.html">Nutrition & Fitness</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="travel.html">Travel</a>
+                              <div class="icon-sub-menu" data-sidenav-dropdown-toggle>
+                                  <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon></span>
+                                  <span class="sidenav-dropdown-icon up-icon" data-sidenav-dropdown-icon></span>
+                              </div>
+                              <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                                  <li>
+                                      <a href="destinations.html">Destinations</a>
+                                  </li>
+                                  <li>
+                                      <a href="types-of-trip.html">Types Of Trip</a>
+                                  </li>
+                                  <li>
+                                      <a href="national-parks.html">National Parks</a>
+                                  </li>
+                                  <li>
+                                      <a href="hotels.html">Hotels</a>
+                                  </li>
+                                  <li>
+                                      <a href="food-drinks.html">Food & drinks</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="art-entertainment.html">Art & Entertainment</a>
+                              <div class="icon-sub-menu" data-sidenav-dropdown-toggle>
+                                  <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon></span>
+                                  <span class="sidenav-dropdown-icon up-icon" data-sidenav-dropdown-icon></span>
+                              </div>
+                              <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                                  <li>
+                                      <a href="music-opera.html">Music & Opera</a>
+                                  </li>
+                                  <li>
+                                      <a href="art-design.html">Art & design</a>
+                                  </li>
+                                  <li>
+                                      <a href="theatre-dance.html">Theatre & Dance</a>
+                                  </li>
+                                  <li>
+                                      <a href="celebrity-film.html">Celebrity & Film</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="tv-schedule.html">TV Schedule</a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+              <!--========== END .NAVBAR #MOBILE-NAV ==========-->
+          </div>
+          <!-- End .container -->
+          <!--========== BEGIN .NAVBAR #FIXED-NAVBAR ==========-->
+          <div class="navbar" id="fixed-navbar">
+              <!--========== BEGIN MAIN-MENU .NAVBAR-COLLAPSE COLLAPSE #FIXED-NAVBAR-TOOGLE ==========-->
+              <div class="main-menu nav navbar-collapse collapse" id="fixed-navbar-toggle">
+                  <!--========== BEGIN .CONTAINER ==========-->
+                  <div class="container">
+                      <!-- Begin .nav navbar-nav -->
+                      <ul class="nav navbar-nav">
+
+                          <li class="active">
+                              <a href="/">Home</a>
+                          </li>
+
+                          <?php foreach ($consulta as $key): ?>
+                          <li class="dropdown">
+                              <a href="" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 12px;"><?=$key->getName()?></a>
+                              <ul class="dropdown-menu">
+                                 <?php
+                                 $subcategory = \Modules\Models\CdSubcategory::find('catid='.$key->getCatid());
+                                 foreach ($subcategory as $cnv):
+                                 ?>
+                                  <li><a href="/ver-noticias/<?=$cnv->getPermalink()?>"><?=$cnv->getName()?></a></li>
+                                 <?php endforeach; ?>
+                              </ul>
+                          </li>
+                          <?php endforeach;?>
+                      </ul>
+                      <!--========== END .NAV NAVBAR-NAV ==========-->
+                  </div>
+                  <!--========== END .CONTAINER ==========-->
+              </div>
+          </div>
+      </header>
+      <?= $this->getContent() ?>
+      <footer id="footer">
+          <!-- Begin .parallax -->
+          <div id="parallax-section2">
+              <div class="bg parallax2 overlay img-overlay2">
+                  <div class="container">
+                      <div class="row no-gutter">
+                          <div class="col-sm-6 col-md-3">
+                              <h3 class="title-left title-style03 underline03">Acerca de nosotros</h3>
+                              <p class="about-us">Desarrollamos tus sueños. Somos una empresa dedicada a hacer crecer tus ideas y apoyar a lograr tus metas, apoyandote con lo mejor en desarrollo web, asesoramiento y aplicaciones moviles.
+
+                                  Implementamos el diseño, desarrollamos las funcionalidades y creamos un ambiente amigable para cualquier dispositivo utilizando las ultimas tecnologías existentes.</p>
+                          </div>
+
+                          <div class="col-sm-6 col-md-3">
+                              <h3 class="title-left title-style03 underline03">Ubicación</h3>
+                              <p>VILLAHERMOSA
+                                  Calle Pejelagarto Edif. 1 Dep. 3
+                                  Fracc. Multiochenta,
+                                  Villahermosa, Tabasco
+                                  (993) 230-8537
+                                  (993) 393-1037</p>
+                          </div>
+                          <div class="col-sm-6 col-md-3">
+                              <h3 class="title-left title-style03 underline03">Correo</h3>
+                              <p>chontaldevelopers@gmail.com</p>
+                          </div>
+                          <div class="col-sm-6 col-md-3">
+                              <h3 class="title-left title-style03 underline03">Contactanos</h3>
+                              <p>(993) 230-8537 <br>
+                                  (993) 322-1741 <br>
+                                  (993) 393-1037</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- End .parallax -->
+      </footer>
+      <div id="copyrights">
+          <div class="container">
+              <div class="copyright"> &copy; 2017, Copyrights Chontal developers.Todos los derechos reservados</div>
+             </div>
+      </div>
         <script src="<?= $this->url->get('front/js/jquery.min.js') ?>"></script>
         <script src="<?= $this->url->get('front/js/popper.min.js') ?>"></script>
         <script src="<?= $this->url->get('front/js/bootstrap.min.js') ?>"></script>
+      <script src="<?=$this->url->get('front/js/owl.carousel.min.js')?>"></script>
         <script src="<?=$this->url->get('front/js/jquery-ui.min.js')?>"></script>
         <script src="<?=$this->url->get('front/js/plugins.js')?>"></script>
         <script src="<?=$this->url->get('front/js/functions.js')?>"></script>
+      <script>
+          $(document).ready(function () {
+              $('.owl-carousel').owlCarousel({
+                  loop:true,
+                  margin:10,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:1,
+                          nav:true
+                      },
+                      600:{
+                          items:3,
+                          nav:false
+                      },
+                      1000:{
+                          items:5,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+          });
+      </script>
+
+  </div>
   </body>
 </html>

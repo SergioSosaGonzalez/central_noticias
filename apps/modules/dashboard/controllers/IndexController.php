@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Dashboard\Controllers;
 use Modules\Models\CdCategory;
+use Modules\Models\CdGallery;
 use Modules\Models\CdSubcategory;
 use Modules\Models\CdUser;
 use Modules\Models\Red\CdPost;
@@ -43,6 +44,14 @@ class IndexController extends ControllerBase{
                     $image_replace = preg_replace('/[^A-Za-z0-9áéíóúÁÉÍÓÚñÑ\_\.!¡¿?]/', '', $file->getName());
                     $new_image =$image_replace;
                     if ($file->moveTo(dirname(dirname(dirname(dirname(__DIR__)))) . "/public/dash/src/" . $new_image)) {
+                           if($request->getPost("file-post")){
+                               $gallery = new CdGallery();
+                               $gallery->save([
+                                      "img"=>$new_image,
+                                      "date_creation"=>date("Y:m:d H:i:s"),
+                                      "newid"=>$request->getPost("file-post")
+                               ]);
+                           }
                         $this->response(array("name" => $new_image, "message" => "SUCCESS", "code" => "200"), 200);
                     } else {
                         $this->response(array("name" => $new_image, "message" => "error try again", "code" => "404"), 200);
@@ -60,11 +69,15 @@ class IndexController extends ControllerBase{
         if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
         $image = $request->getPost("image");
         if($image){
-            if(file_exists('./dash/src/'.$image)){
-                unlink("./dash/src/".$image);
-                $this->response(array("message"=>"SUCCESS","code"=>"200"),200);
-            }else{
-                $this->response(array("message"=>"error: No se ha encontrado una imagen","code"=>"200"),200);
+            $consulta = CdGallery::findFirst($image);
+            $name_image = $consulta->getImg();
+            if($consulta->delete()){
+                if(file_exists('./dash/src/'.$name_image)){
+                    unlink("./dash/src/".$name_image);
+                    $this->response(array("message"=>"SUCCESS","code"=>"200"),200);
+                }else{
+                    $this->response(array("message"=>"error: No se ha encontrado una imagen","code"=>"200"),200);
+                }
             }
         }else{
             $this->response(array("message"=>"file null","code"=>"200"),200);

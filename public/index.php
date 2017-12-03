@@ -23,20 +23,19 @@ $di->set('router', function(){
         'action' => 'index',
     ));
 
+
     $router->add("/apiconsulta", array(
         'module'=>'frontend',
         'controller' => 'index',
         'action' => 'apiconsulta',
     ));
 
+
     $router->add("/output", array(
         'module'=>'frontend',
         'controller' => 'index',
         'action' => 'output',
     ));
-
-
-
 
 /*Secciones*/
     $router->add('/([0-9-a-zA-Z\-]+)', array(
@@ -46,7 +45,6 @@ $di->set('router', function(){
     ))->setName("controllers")->convert('action', function($action) {
             return \Phalcon\Text::lower(\Phalcon\Text::camelize($action));
     });
-
 
  /* dashboard */
     $router->add("/dashboard", array(
@@ -84,6 +82,8 @@ $di->set('router', function(){
         'controller' => 'index',
         'action' => 'apibuscarid',
     ));
+
+
     $router->add("/data/{id:[0-9]+}", array(
         'module'=>'frontend',
         'controller' => 'index',
@@ -95,11 +95,31 @@ $di->set('router', function(){
         'action' => 'apidelete',
     ));
 
+    $router->add("/apicategorias", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'apicategory',
+    ));
+    $router->add("/ver-noticias/([0-9-a-zA-Z\-]+)", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'verpaginas',
+        'permalinks'=>1
+    ));
+    $router->add("/ver-noticias/([0-9-a-zA-Z\-]+)/([0-9-a-zA-Z\-]+)", array(
+        'module'=>'frontend',
+        'controller' => 'index',
+        'action' => 'seenew',
+        'subcategory'=>1,
+        'newname'=>2
+    ));
+
     $router->add("/login/ajax",array(
         'module'=>'dashboard',
         'controller' => 'login',
         'action' => 'ajax',
     ));
+
     $router->add("/dashboard/lista",array(
         'module'=>'dashboard',
         'controller' => 'user',
@@ -123,6 +143,14 @@ $di->set('router', function(){
         'controller' => 'user',
         'action' => 'index',
     ));
+
+
+    $router->add("/dashboard/newenterprise",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'newenterprise',
+    ));
+
 
     $router->add("/dashboard/categorias-noticias", array(
         'module'=>'dashboard',
@@ -169,6 +197,12 @@ $di->set('router', function(){
         'module'=>'dashboard',
         'controller' => 'news',
         'action' => 'createnew',
+    ));
+
+    $router->add("/dashboard/delete-noticia",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'deletenew',
     ));
 
     $router->add("/uploadimage",array(

@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    if($("#data-table-jo").length>=1){
+        $("#data-table-jo").DataTable();
+    }
    if($('#descriptionCreateNew').length>=1){
        CKEDITOR.replace('descriptionCreateNew');
    }
@@ -29,7 +32,6 @@ $(document).ready(function () {
    if($('#createNew').length>=1){
        $('#createNew').formValidation({
            framework:"bootstrap",
-           included:[":hidden"],
            icon:{
                valid: 'glyphicon glyphicon-ok',
                invalid: 'glyphicon glyphicon-remove',
@@ -44,13 +46,6 @@ $(document).ready(function () {
                         }
                     }
                 },
-               subtitle:{
-                    validators:{
-                        notEmpty:{
-                            message:"rellenar campo"
-                        }
-                    }
-               },
                "image-2":{
                     validators:{
                         notEmpty:{
@@ -105,9 +100,20 @@ $(document).ready(function () {
                dataType:"json",
                success:function (resp) {
                     swal("Datos guardados correctamente");
+                    $('input[name=title]').val('');
+                    $('input[name=permalinkCreateNew]').val('');
+                    $('input[name=subtitle]').val('');
+                    $("input[name=image-2]").val('');
+                    $("textarea[name=description]").val('');
+                    $("textarea[name=content]").val('');
+                    CKEDITOR.instances['descriptionCreateNew'].setData('');
+                    CKEDITOR.instances['contentCreateNew'].setData('')
+                    $('input[name=author]').val('');
+                   news_mainImage.removeAllFiles();
+
                }
-           })
-       })
+           });
+       });
        permalink($('.cplCreateNew'),"permalinkCreateNew",$('#createNew'));
    }
 
@@ -123,13 +129,6 @@ $(document).ready(function () {
            locale:"es_Es",
            fields:{
                title:{
-                   validators:{
-                       notEmpty:{
-                           message:"rellenar campo"
-                       }
-                   }
-               },
-               subtitle:{
                    validators:{
                        notEmpty:{
                            message:"rellenar campo"
@@ -196,11 +195,77 @@ $(document).ready(function () {
        });
        permalink($('.cplEditNew'),"permalinkEditNew",$('#editNew'));
    }
+   if($('#newEnterprise').length>=1)
+   {
+       $('#newEnterprise').formValidation({
+           framework:"bootstrap",
+           included:[":hidden"],
+           icon:{
+               valid: 'glyphicon glyphicon-ok',
+               invalid: 'glyphicon glyphicon-remove',
+               validating: 'glyphicon glyphicon-refresh'
+           },
+           locale:"es_Es",
+           fields:{
+               name_enterprise:{
+                   validators:{
+                       notEmpty:{
+                           message:"Rellenar campo"
+                       }
+                   }
+               },
+               repit_name:{
+                   validators:{
+                       identical:{
+                           field:"name_enterprise",
+                           message:"Los campos no coinciden"
+                       }
+                   }
+               }
+           }
 
+       }).on("success.form.fv",function (e) {
+           e.preventDefault();
+           $.ajax({
+               url:"/dashboard/newenterprise",
+               method:"post",
+               data:$(this).serialize(),
+               dataType:"json",
+               success:function (resp) {
+                   swal("Datos guardados correctamente");
+                   $('#entid').html(resp.html);
+               }
+           });
+       });
+   }
 
 
 });
 
 function editNew($id) {
     window.location.replace("/dashboard/editar-noticia/"+$id);
+}
+
+function deleteNew($id){
+    swal({
+        title: '¿Estas seguro de eliminar esta noticia?',
+        text: "No se podra revertir esto",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si,¡eliminelo!'
+    }).then(function () {
+        $.ajax({
+            url:"/dashboard/delete-noticia",
+            method:"post",
+            data:{id:$id},
+            dataType:"json",
+            success:function (resp) {
+                swal('Eliminado','La noticia ha sido eliminda.','success');
+                $('#'+resp.id).remove()
+            }
+        });
+    });
+
 }

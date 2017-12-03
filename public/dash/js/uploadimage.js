@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     Dropzone.autoDiscover=false;
     if($('#newsImage').length>=1){
@@ -221,6 +220,7 @@ $(document).ready(function () {
 
     if($('#editGallery').length>=1){
         var contador=0;
+        var nameImage="";
         var news_editGallery = new Dropzone('#editGallery',{
             url:"/uploadimage",
             uploadImages:false,
@@ -251,46 +251,32 @@ $(document).ready(function () {
                 return info;
             },
             sending:function (file,xhr,formData) {
-                formData.append('file-post',2);
+                formData.append('file-post',$("#id").val());
                 formData.append("agreement",$("#name-agreement").val());
             },
             success:function (file,response) {
-                contador++;
                 var name_image=response;
                 $(".dz-preview").addClass("dz-success");
-                file.previewElement.id=contador;
                 $("div.progress").remove();
-                file.previewElement.accessKey = name_image.name;
-                $("#content-image").append('<input type="hidden" id="'+contador+'" value="'+name_image.name+'" name="image-3[]">');
-
+                $("#content-image-g").append('<input type="hidden" value="'+name_image.name+'" name="image-3[]">');
 
             },
             removedfile:function (file) {
-                var imagen;
                 var imageid=file.previewElement.id;
-                var name = file.previewElement.accessKey;
-                $(file.previewElement).remove();
-                var imagenes = document.getElementsByName('image-3[]');
-                for(var i=0;i<imagenes.length;i++){
-                    imagenvalor = imagenes[i].value;
-                    console.log(imagenvalor);
-                    if(name==imagenvalor){
-                        imagen=imagenvalor;
-                        break;
-                    }
-                }
+
+
+
 
                 $.ajax({
                     url: "/deleteimage",
                     type: "post",
-                    data: { "image":imagen},
+                    data: { image:imageid},
                     dataType:"json",
                     success : function(response){
                         if(response.message=="SUCCESS" && response.code==200){
-                            $(file.previewElement).remove();
                             $("#"+imageid).remove();
                         }else{
-                            $(file.previewElement).remove();
+
                         }
                     },
                     error : function(){
@@ -298,16 +284,23 @@ $(document).ready(function () {
                     }
                 });
 
-
+                $(file.previewElement).remove();
             }
         });
         var imagenes = document.getElementsByName('image-3[]');
-        for(var i=0;i<imagenes.length;i++){
+
+        $('input[name="image-3[]"]').each(function() {
+            var value = $(this).attr("data-id"); // get values
+
             var mockFile = { name: "Click para remover la imagen", size: 12345};
             news_editGallery.emit("addedfile",mockFile);
-            image_load = "/dash/src/"+imagenes[i].value;
+            news_editGallery.element.lastChild.id=value;
+
+            image_load = "/dash/src/"+$(this).val();
             news_editGallery.emit("thumbnail", mockFile,image_load);
-            contador++;
-        }
+            var existingFileCount = 1; // The number of files already uploaded
+            news_editGallery.options.maxFiles = news_editGallery.options.maxFiles - existingFileCount;
+        });
+
     }
 });
