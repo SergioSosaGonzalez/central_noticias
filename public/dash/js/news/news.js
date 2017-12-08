@@ -1,5 +1,40 @@
 $(document).ready(function () {
+    var contadorDrap=0;
+   var start=0;
+    $("#table-1").tableDnD({
+        onDragClass: "drag-drop",
+        onDragStart: function(table, row) {
+          start=row.id;
+        },
+        onDrop: function(table, row) {
+            orders = $.tableDnD.serialize();
+            var array=[];
+            var arrayId=[];
+            var rows=table.tBodies[0].rows;
+            for (var i=0; i<rows.length; i++) {
+                result = i+1;
+                split = rows[i].id;
+                var idGall=rows[i].className;
+                console.log("start="+start);
+                console.log("split="+split);
+                array.push(split);
+                arrayId.push(idGall);
+            }
+            console.log($.tableDnD.serialize());
 
+            console.log(array);
+            $.ajax({
+                url:"/dashboard/positionslider?id="+$("#id").val(),
+                method:"post",
+                data:{"table-1[]":array,"idGall":arrayId},
+                dataType:"json",
+                success:function (resp) {
+                    console.log(resp);
+                }
+            });
+
+        }
+    });
     if($("#data-table-jo").length>=1){
         $("#data-table-jo").DataTable();
     }

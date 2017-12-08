@@ -44,15 +44,26 @@ class IndexController extends ControllerBase{
                     $image_replace = preg_replace('/[^A-Za-z0-9áéíóúÁÉÍÓÚñÑ\_\.!¡¿?]/', '', $file->getName());
                     $new_image =$image_replace;
                     if ($file->moveTo(dirname(dirname(dirname(dirname(__DIR__)))) . "/public/dash/src/" . $new_image)) {
-                           if($request->getPost("file-post")){
+                        $id_image=0;
+                        if($request->getPost("file-post")>0){
+                               $positionValue=0;
+                               $position=CdGallery::find("newid=".$request->getPost("file-post"));
+                               foreach ($position as $key):
+                                   $positionValue=$key->getPosition();
+                                   endforeach;
                                $gallery = new CdGallery();
                                $gallery->save([
                                       "img"=>$new_image,
                                       "date_creation"=>date("Y:m:d H:i:s"),
-                                      "newid"=>$request->getPost("file-post")
+                                      "newid"=>$request->getPost("file-post"),
+                                      "position"=>$positionValue+1
                                ]);
+                               $consulta = CdGallery::find();
+                               foreach ($consulta as $key):
+                                   $id_image=$key->getGallid();
+                               endforeach;
                            }
-                        $this->response(array("name" => $new_image, "message" => "SUCCESS", "code" => "200"), 200);
+                        $this->response(array("name" => $new_image,"idGal"=>$id_image ,"message" => "SUCCESS", "code" => "200"), 200);
                     } else {
                         $this->response(array("name" => $new_image, "message" => "error try again", "code" => "404"), 200);
                     }
@@ -68,6 +79,7 @@ class IndexController extends ControllerBase{
         $request = $this->request;
         if(!($request->isPost() and $request->isAjax()))$this->response(array("message"=>"error"),404);
         $image = $request->getPost("image");
+        $imagePrincipal = $request->getPost("imagePrincipal");
         if($image){
             $consulta = CdGallery::findFirst($image);
             $name_image = $consulta->getImg();
@@ -79,6 +91,15 @@ class IndexController extends ControllerBase{
                     $this->response(array("message"=>"error: No se ha encontrado una imagen","code"=>"200"),200);
                 }
             }
+        }elseif($imagePrincipal){
+            $name_image=$imagePrincipal;
+            if(file_exists('./dash/src/'.$name_image)){
+                unlink("./dash/src/".$name_image);
+                $this->response(array("message"=>"SUCCESS","code"=>"200"),200);
+            }else{
+                $this->response(array("message"=>"error: No se ha encontrado una imagen","code"=>"200"),200);
+            }
+
         }else{
             $this->response(array("message"=>"file null","code"=>"200"),200);
         }

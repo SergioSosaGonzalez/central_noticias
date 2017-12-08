@@ -179,7 +179,7 @@ $(document).ready(function () {
                 return info;
             },
             sending:function (file,xhr,formData) {
-                formData.append('file-post',2);
+                formData.append('file-post','imgagenPrincipal');
                 formData.append("agreement",$("#name-agreement").val());
             },
             success:function (file,response) {
@@ -195,7 +195,7 @@ $(document).ready(function () {
                 $.ajax({
                     url: "/deleteimage",
                     type: "post",
-                    data: { "image":name},
+                    data: { "imagePrincipal":name},
                     dataType:"json",
                     success : function(response){
                         if(response.message=="SUCCESS" && response.code==200){
@@ -215,6 +215,7 @@ $(document).ready(function () {
         news_editImage.emit("addedfile",mockFile);
         image_load1 = "/dash/src/"+$("#image-2").val();
         news_editImage.emit("thumbnail", mockFile,image_load1);
+        news_editImage.element.lastChild.accessKey=$("#image-2").val();
 
     }
 
@@ -226,7 +227,7 @@ $(document).ready(function () {
             uploadImages:false,
             maxFileSize:5,
             maxFile:5,
-            parallelUploads:1,
+            parallelUploads:5,
             addRemoveLinks:true,
             dictResponseError:"No se puede subir esta imagen",
             autoProcessQueue:true,
@@ -258,15 +259,11 @@ $(document).ready(function () {
                 var name_image=response;
                 $(".dz-preview").addClass("dz-success");
                 $("div.progress").remove();
-                $("#content-image-g").append('<input type="hidden" value="'+name_image.name+'" name="image-3[]">');
-
+                file.previewElement.id=name_image.idGal;
+                $("#content-image-g").append('<input type="hidden" value="'+name_image.name+'" name="image-3[]" data-id="'+name_image.idGal+'">');
             },
             removedfile:function (file) {
                 var imageid=file.previewElement.id;
-
-
-
-
                 $.ajax({
                     url: "/deleteimage",
                     type: "post",
@@ -287,20 +284,13 @@ $(document).ready(function () {
                 $(file.previewElement).remove();
             }
         });
-        var imagenes = document.getElementsByName('image-3[]');
-
-        $('input[name="image-3[]"]').each(function() {
+       $('input[name="image-3[]"]').each(function() {
             var value = $(this).attr("data-id"); // get values
-
             var mockFile = { name: "Click para remover la imagen", size: 12345};
             news_editGallery.emit("addedfile",mockFile);
             news_editGallery.element.lastChild.id=value;
-
             image_load = "/dash/src/"+$(this).val();
             news_editGallery.emit("thumbnail", mockFile,image_load);
-            var existingFileCount = 1; // The number of files already uploaded
-            news_editGallery.options.maxFiles = news_editGallery.options.maxFiles - existingFileCount;
         });
-
     }
 });

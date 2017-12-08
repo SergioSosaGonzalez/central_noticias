@@ -131,6 +131,13 @@ $di->set('router', function(){
         'action' => 'index',
     ));
 
+    $router->add("/dashboard/positionslider",array(
+        'module'=>'dashboard',
+        'controller' => 'news',
+        'action' => 'positionslider'
+    ));
+
+
 
 
     $router->add("/dashboard/validateurl",array(

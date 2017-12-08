@@ -93,5 +93,21 @@ class ControllerBase extends Controller{
         //'/[^A-Za-z0-9áéíóúÁÉÍÓÚñÑ\-!¡¿?@]/', '',
     }
 
+    public  function ordenamientoBurbuja($array){
+        for($i=1;$i<$array;$i++)
+        {
+            for($j=0;$j<$array-$i;$j++)
+            {
+                if($array[$j]>$array[$j+1])
+                {
+                    $k=$array[$j+1];
+                    $array[$j+1]=$array[$j];
+                    $array[$j]=$k;
+                }
+            }
+        }
+        return $array;
+    }
+
 
 }

@@ -419,6 +419,7 @@
     <script src="<?=$this->url->get('dash/js/formValidation.min.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/bootstrapV.min.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/sweetalert2.all.js')?>"></script>
+    <script src="<?=$this->url->get('dash/js/jquery.tablednd.js')?>"></script>
 
     <script>
         $(document).ready(function () {

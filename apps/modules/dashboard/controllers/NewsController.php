@@ -87,6 +87,24 @@ class NewsController extends ControllerBase
         $this->response(array("message"=>"correcto"),200);
     }
 
+    public function positionsliderAction(){
+        $id=$_GET['id'];
+        $request=new Request();
+        if(!($request->isAjax() and $request->isPost()))$this->response(array("message"=>"error"),404);
+        $tablesPositions=$request->getPost('table-1');
+        $gallid=$request->getPost('idGall');
+        $contador=0;
+        $consulta =CdGallery::find(          "newid=".$id);
+        foreach ($consulta as $key=>$cnv):
+            $contador++;
+            $galeria = CdGallery::findFirst("gallid=".$gallid[$key]);
+            $galeria->setPosition($contador);
+            $galeria->save();
+        endforeach;
+
+        $this->response(array("message"=>"correcto","positions"=>$tablesPositions,"gallid"=>$gallid),200);
+    }
+
     public function editnewAction(){
          $id=$this->dispatcher->getParam('id');
         $this->view->setVar("id",$id);
@@ -99,7 +117,7 @@ class NewsController extends ControllerBase
         $this->view->setVar("new",$new);
         $this->view->setVar("subcategory",$subcategory);
 
-        $gallery= CdGallery::find("newid=".$id);
+        $gallery= CdGallery::find("newid=".$id."Order By position"  );
         $this->view->setVar("gallery",$gallery);
     }
 

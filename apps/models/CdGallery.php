@@ -34,6 +34,13 @@ class CdGallery extends \Phalcon\Mvc\Model
     protected $newid;
 
     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=11, nullable=true)
+     */
+    protected $position;
+
+    /**
      * Method to set the value of field gallid
      *
      * @param integer $gallid
@@ -86,6 +93,19 @@ class CdGallery extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field position
+     *
+     * @param integer $position
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field gallid
      *
      * @return integer
@@ -123,6 +143,16 @@ class CdGallery extends \Phalcon\Mvc\Model
     public function getNewid()
     {
         return $this->newid;
+    }
+
+    /**
+     * Returns the value of field position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 
     /**
