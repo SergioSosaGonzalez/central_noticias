@@ -14,6 +14,7 @@ class NewsController extends ControllerBase
 {
     public function indexAction()
     {
+        
         $consulta = CdNews::find();
         $this->view->setVar("consulta",$consulta);
     }
@@ -91,8 +92,10 @@ class NewsController extends ControllerBase
         $id=$_GET['id'];
         $request=new Request();
         if(!($request->isAjax() and $request->isPost()))$this->response(array("message"=>"error"),404);
+
         $tablesPositions=$request->getPost('table-1');
         $gallid=$request->getPost('idGall');
+
         $contador=0;
         $consulta =CdGallery::find(          "newid=".$id);
         foreach ($consulta as $key=>$cnv):

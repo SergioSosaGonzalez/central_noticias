@@ -500,7 +500,7 @@ class CdUser extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("concentrado_noticias");
-        $this->setSource("Cd_User");
+        $this->setSource("cd_user");
     }
 
     /**
@@ -510,7 +510,7 @@ class CdUser extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'Cd_User';
+        return 'cd_user';
     }
 
     /**

@@ -408,19 +408,14 @@
     <script src="/dash/js/pace.min.js"></script>
     <script src="/dash/js/ncms.min.js"></script>
     <script src="/dash/js/uploadimage.js"></script>
-
     <script src="/dash/js/site-config.js"></script>
     <script src="/dash/bower_components/dropzone/dist/min/dropzone.min.js"></script>
-    <script src="<?=$this->url->get('dash/js/jquery.dataTables.min.js')?>"</script>
-
-
-
+    <script src="<?=$this->url->get('dash/js/jquery.dataTables.min.js')?>"></script>
     <script type="text/javascript" src="<?=$this->url->get('dash/js/loader.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/formValidation.min.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/bootstrapV.min.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/sweetalert2.all.js')?>"></script>
     <script src="<?=$this->url->get('dash/js/jquery.tablednd.js')?>"></script>
-
     <script>
         $(document).ready(function () {
             $('#formPass').formValidation({

@@ -159,6 +159,7 @@ class Module implements ModuleDefinitionInterface
                 'dbname'      => 'cd_red'));
         });
         //MongoDB Database
+        /*
         $di['mongo'] = function() use ($config){
             if (!$config->database->mongo->username OR !$config->database->mongo->password) {
                 $mongo = new \MongoClient('mongodb://' . $config->database->mongo->host);
@@ -168,6 +169,7 @@ class Module implements ModuleDefinitionInterface
 
             return $mongo->selectDB($config->database->mongo->dbname);
         };
+        */
     }
 
 }

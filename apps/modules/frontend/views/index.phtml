@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/weather-icons.min.css')?>"
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/owl.carousel.min.css')?>"
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/owl.theme.default.min.css')?>"
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('front/css/starrr.css')?>"
   </head>
   <body>
   <div id="pageloader">
@@ -369,13 +370,17 @@
               <div class="copyright"> &copy; 2017, Copyrights Chontal developers.Todos los derechos reservados</div>
              </div>
       </div>
-        <script src="<?= $this->url->get('front/js/jquery.min.js') ?>"></script>
-        <script src="<?= $this->url->get('front/js/popper.min.js') ?>"></script>
+
+      <script src="<?= $this->url->get('front/js/jquery.min.js') ?>"></script>
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59e77d4b2ddddce3"></script>
+
+      <script src="<?= $this->url->get('front/js/popper.min.js') ?>"></script>
         <script src="<?= $this->url->get('front/js/bootstrap.min.js') ?>"></script>
       <script src="<?=$this->url->get('front/js/owl.carousel.min.js')?>"></script>
         <script src="<?=$this->url->get('front/js/jquery-ui.min.js')?>"></script>
         <script src="<?=$this->url->get('front/js/plugins.js')?>"></script>
         <script src="<?=$this->url->get('front/js/functions.js')?>"></script>
+        <script src="<?=$this->url->get('front/js/starrr.js')?>"></script>
       <script>
           $(document).ready(function () {
               $('.owl-carousel').owlCarousel({
@@ -399,6 +404,9 @@
                   }
               });
           });
+      </script>
+      <script>
+          $('#starts').starrr();
       </script>
 
   </div>

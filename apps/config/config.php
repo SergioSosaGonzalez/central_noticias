@@ -5,7 +5,7 @@ return new \Phalcon\Config(array(
             'adapter'     => 'Mysql',
             'host'        => 'localhost',
             'username'    => 'root',
-            'password'    => '',
+            'password'    => 'admin',
             'dbname'      => 'concentrado_noticias',
             'charset'     => 'utf8',
         ),

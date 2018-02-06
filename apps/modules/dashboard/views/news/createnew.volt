@@ -76,7 +76,6 @@
                                  Arrastra una imagen<br><i style="font-size: 14px">o haz click para seleccionar manualmente</i>
                              </h2>
                          </div>
-
                      </div>
                  </div>
             </div>

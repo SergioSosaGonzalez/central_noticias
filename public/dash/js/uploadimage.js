@@ -109,7 +109,6 @@ $(document).ready(function () {
                 file.previewElement.accessKey = name_image.name;
                 $("#content-image").append('<input type="hidden" id="'+contador+'" value="'+name_image.name+'" name="image-3[]">');
 
-
             },
             removedfile:function (file) {
                 var imagen;

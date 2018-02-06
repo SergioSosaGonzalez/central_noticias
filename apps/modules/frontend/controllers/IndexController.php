@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Frontend\Controllers;
 
+
 use Modules\Models\CdCategory;
 use Modules\Models\CdGallery;
 use Modules\Models\CdNews;
@@ -11,6 +12,7 @@ use Modules\Models\Formulario;
 use Modules\Models\Red\CdPost;
 use Phalcon\Forms\Form;
 use Phalcon\Http\Request;
+use Phalcon\Mvc\Model\Query;
 
 class IndexController extends ControllerBase {
     public function indexAction(){
@@ -233,7 +235,7 @@ class IndexController extends ControllerBase {
     }
 
     public function apiconsultaAction(){
-        $post = CdPost::find();
+        $post = CdNews::find();
 
         $this->response(array($post->toArray()),200);
     }
@@ -243,6 +245,7 @@ class IndexController extends ControllerBase {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type,x-prototype-version,x-requested-with');
+
         $this->response($category->toArray(),200);
     }
 
@@ -254,13 +257,24 @@ class IndexController extends ControllerBase {
     }
 
     public function apibuscaridAction($id){
-
-        $consulta =CdPost::findFirst("pid='$id'");
-        if(!$consulta) $this->response(array("message"=>"No se ha encontrado el objeto"),200);
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type,x-prototype-version,x-requested-with');
-        $this->response(array($consulta->toArray()),200);
+        $consulta =CdSubcategory::find("catid='$id'");
+        foreach ($consulta as $key):
+            $consulta_noticias=CdNews::find("subid=".$key->getSubid());
+            $array_news[]=$consulta_noticias->toArray();
+        endforeach;
+        $array_limpio=array();
+
+        for($i=0;$i<count($array_news);$i++){
+             if(count($array_news[$i])>0){
+                 for($j=0;$j<count($array_news[$i]);$j++){
+                     $array_limpio[]=$array_news[$i][$j];
+                 }
+             }
+        }
+        $this->response($array_limpio,200);
     }
 
     public function verpaginasAction(){

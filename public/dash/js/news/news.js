@@ -32,7 +32,6 @@ $(document).ready(function () {
                     console.log(resp);
                 }
             });
-
         }
     });
     if($("#data-table-jo").length>=1){

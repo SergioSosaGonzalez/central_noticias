@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="C:\xampp\phalcon-devtools-master\ide\phpstorm" />
+      <path value="$PROJECT_DIR$/../../../phalcon-devtools/ide/phpstorm" />
     </include_path>
   </component>
 </project>

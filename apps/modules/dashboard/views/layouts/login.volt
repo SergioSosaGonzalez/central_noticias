@@ -20,7 +20,7 @@
 
     <!-- CSS INCLUDE -->
 
-    <link rel="stylesheet" type="text/css" href="<?=$this->url->get("dash/css/bootstrap.min.css")?>">
+    <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/bootstrap.min.css')?>">
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/font-awesome.css')?>">
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/myStyle.css')?>">
     <link rel="stylesheet" type="text/css" href="<?=$this->url->get('dash/css/formValidation.min.css')?>"
@@ -46,7 +46,6 @@
 
 <script>
     $(document).ready(function() {
-
         $('#inicioSesion').formValidation({
             framework:'bootstrap',
             icon: {
